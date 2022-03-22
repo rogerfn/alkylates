@@ -13,8 +13,8 @@ before_script:
   
 production:
     script:
-      - ssh ubuntu@chemicals-digital.sasol.com "cd /home/ubuntu/repos/studio_sandton_projects/alkylates  && git checkout master && git pull origin master && cd backend/ &&  docker build . -t sasoldevchemicalsdigitalreg.azurecr.io/alkylates-backend:latest && docker push sasoldevchemicalsdigitalreg.azurecr.io/alkylates-backend:latest && kubectl apply -f ../kubernetes/app.yml && kubectl rollout restart deployment/alkylates-backend && exit"
-      - ssh ubuntu@chemicals-digital.sasol.com "cd /home/ubuntu/repos/studio_sandton_projects/alkylates  && git checkout master && git pull origin master && cd frontend/ &&  docker build . -t sasoldevchemicalsdigitalreg.azurecr.io/alkylates-frontend:latest && docker push sasoldevchemicalsdigitalreg.azurecr.io/alkylates-frontend:latest && kubectl apply -f ../kubernetes/app.yml && kubectl rollout restart deployment/alkylates-frontend && exit"
+      - ssh ubuntu@chemicals-digital.sasol.com "cd /home/ubuntu/repos/studio_sandton_projects/alkylates  && git checkout master && git pull origin master && cd backend/ &&  docker build src/ -t sasoldevchemicalsdigitalreg.azurecr.io/alkylates-backend:latest && docker push sasoldevchemicalsdigitalreg.azurecr.io/alkylates-backend:latest && kubectl apply -f ../kubernetes/app.yml && kubectl rollout restart deployment/alkylates-backend && exit"
+      - ssh ubuntu@chemicals-digital.sasol.com "cd /home/ubuntu/repos/studio_sandton_projects/alkylates  && git checkout master && git pull origin master && cd frontend/ &&  docker build src/ -t sasoldevchemicalsdigitalreg.azurecr.io/alkylates-frontend:latest && docker push sasoldevchemicalsdigitalreg.azurecr.io/alkylates-frontend:latest && kubectl apply -f ../kubernetes/app.yml && kubectl rollout restart deployment/alkylates-frontend && exit"
 
     only:
       - master
