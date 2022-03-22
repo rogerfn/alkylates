@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_3miw7cq2@xp8cpiy9zxr9-#d!voj=m2_f(c**z94zjd=7wbkd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['alkylates-api.chemicals-digital.sasol.com', 'alkylates.chemicals-digital.sasol.com']
+ALLOWED_HOSTS = ['*.chemicals-digital.sasol.com']
 
 
 # Application definition
