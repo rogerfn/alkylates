@@ -1,0 +1,31 @@
+variables:
+  GIT_STRATEGY: none
+
+before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY_2" | tr -d '\r' | ssh-add -
+    - echo "$SSH_PRIVATE_KEY_NEWTON_2" | tr -d '\r' | ssh-add -
+
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  
+production:
+    script:
+      - ssh ubuntu@chemicals-digital.sasol.com "cd /home/ubuntu/repos/studio_sandton_projects/alkylates  && git checkout master && git pull origin master && cd backend/ &&  docker build . -t sasoldevchemicalsdigitalreg.azurecr.io/alkylates-backend:latest && docker push sasoldevchemicalsdigitalreg.azurecr.io/alkylates-backend:latest && kubectl apply -f ../kubernetes/app.yml && kubectl rollout restart deployment/alkylates-backend && exit"
+      - ssh ubuntu@chemicals-digital.sasol.com "cd /home/ubuntu/repos/studio_sandton_projects/alkylates  && git checkout master && git pull origin master && cd frontend/ &&  docker build . -t sasoldevchemicalsdigitalreg.azurecr.io/alkylates-frontend:latest && docker push sasoldevchemicalsdigitalreg.azurecr.io/alkylates-frontend:latest && kubectl apply -f ../kubernetes/app.yml && kubectl rollout restart deployment/alkylates-frontend && exit"
+
+    only:
+      - master
+    tags: 
+      - git-cloner
+
+testing:
+  script:
+      - ssh ubuntu@chemicals-digital.sasol.com "cd /home/ubuntu/repos/studio_sandton_projects/alkylates  && git checkout dev && git pull origin dev && cd backend/ &&  docker build .  --build-arg MODE=testing -t sasoldevchemicalsdigitalreg.azurecr.io/alkylates-backend:test && docker push sasoldevchemicalsdigitalreg.azurecr.io/alkylates-backend:test && kubectl apply -f ../kubernetes/app-test.yml && kubectl rollout restart deployment/alkylates-backend-test && exit"
+      - ssh ubuntu@chemicals-digital.sasol.com "cd /home/ubuntu/repos/studio_sandton_projects/alkylates  && git checkout dev && git pull origin dev && cd frontend/ &&  docker build .  --build-arg MODE=testing -t sasoldevchemicalsdigitalreg.azurecr.io/alkylates-frontend:test && docker push sasoldevchemicalsdigitalreg.azurecr.io/alkylates-frontend:test && kubectl apply -f ../kubernetes/app-test.yml && kubectl rollout restart deployment/alkylates-frontend-test && exit"
+  only:
+    - dev
+  tags: 
+    - git-cloner

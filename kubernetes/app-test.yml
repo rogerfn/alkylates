@@ -11,7 +11,7 @@ spec:
   ports:
     - port: 8000
       targetPort: 8000
-      nodePort: 32121
+      nodePort: 32122
 ---
 apiVersion: v1
 kind: Service
@@ -26,7 +26,7 @@ spec:
   ports:
     - port: 8080
       targetPort: 80
-      nodePort: 32122
+      nodePort: 32123
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -59,7 +59,7 @@ spec:
         - image: sasoldevchemicalsdigitalreg.azurecr.io/alkylates-backend:test
           name: alkylates-backend-test
           command: ["/app/entrypoint.sh"]
-          args: ["gunicorn", "yet.wsgi:application", "--bind", "0.0.0.0:8000"]
+          args: ["gunicorn", "alkylates.wsgi:application", "--bind", "0.0.0.0:8000"]
           imagePullPolicy: IfNotPresent
 
     
