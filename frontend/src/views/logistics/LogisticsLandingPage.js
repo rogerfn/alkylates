@@ -40,7 +40,7 @@ const LogisticsLandingPage = () => {
             <CCol style={{ textAlign: 'center' }}>
               {/* <Typing speed={50}> */}
               <CCardTitle style={{ fontSize: '3em', color: 'rgb(1, 58, 99)' }}>
-                Welcome to the YET US Digital Platform
+                Welcome to the Advanced Alkylates Platform
               </CCardTitle>
               {/* <CCardTitle
                   style={{ fontSize: '1.25em', color: 'rgb(1, 58, 99)', marginTop: '1rem' }}
@@ -317,7 +317,7 @@ const LogisticsLandingPage = () => {
                     textAlign: 'center',
                   }}
                 >
-                  Logistics
+                  Homolog Balance
                 </div>
               </CButton>
             </CCol>
@@ -364,7 +364,7 @@ const LogisticsLandingPage = () => {
                     textAlign: 'center',
                   }}
                 >
-                  Production
+                  LAB NB & Cost Per Volume
                 </div>
               </CButton>
             </CCol>
@@ -411,7 +411,7 @@ const LogisticsLandingPage = () => {
                     textAlign: 'center',
                   }}
                 >
-                  User Inputs
+                  Lab forecast Per Cost
                 </div>
               </CButton>
             </CCol>

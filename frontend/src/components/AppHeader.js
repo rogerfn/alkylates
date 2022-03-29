@@ -77,7 +77,7 @@ const AppHeader = () => {
               <img src={sasollogo} style={{ marginLeft: '0.5em', height: '35px' }}></img>
             </CHeaderBrand>
             <p style={mystylep} className="c-sidebar-brand-full">
-              YET US
+              Alkylates
             </p>
           </CButton>
           <CHeaderNav className="d-none d-md-flex me-auto">
@@ -88,7 +88,7 @@ const AppHeader = () => {
                 component={NavLink}
                 activeClassName="active"
               >
-                Production
+                Home
               </CNavLink>
             </CNavItem>
             <CNavItem>
@@ -98,7 +98,7 @@ const AppHeader = () => {
                 component={NavLink}
                 activeClassName="active"
               >
-                Logistics
+                Homolog
               </CNavLink>
             </CNavItem>
             <CNavItem>
@@ -108,7 +108,7 @@ const AppHeader = () => {
                 component={NavLink}
                 activeClassName="active"
               >
-                Inputs
+                Lab
               </CNavLink>
             </CNavItem>
           </CHeaderNav>
