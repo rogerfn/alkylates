@@ -1,7 +1,7 @@
 import React, { useState, useEffect, lazy } from 'react'
 import axios from 'axios'
 import { ResponsiveBar } from '@nivo/bar'
-import FormatDate from 'src/functions/Functions'
+import FormatDate from '../../functions/Functions'
 
 export default function BarChartCatCountCust({ databarcust, handleonClickCust }) {
   return (

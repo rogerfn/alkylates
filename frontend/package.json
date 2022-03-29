@@ -34,6 +34,7 @@
     "file-saver": "^2.0.5",
     "fusioncharts": "^3.18.0",
     "moment": "^2.29.1",
+    "node-sass": "^7.0.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-app-polyfill": "^2.0.0",
@@ -54,6 +55,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "rsuite": "^5.2.0",
+    "sass": "^1.49.9",
     "simplebar-react": "^2.3.6",
     "xlsx": "^0.17.4"
   },

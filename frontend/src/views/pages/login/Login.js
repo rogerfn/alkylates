@@ -107,8 +107,8 @@ const Login = () => {
         <CCol>
           <div style={text}>
             <img style={{ height: '100px' }} src={sasollogo}></img>
-            <h1> YET US</h1>
-            <p>Welcome to the YET US Login Page</p>
+            <h1>Alkylates</h1>
+            <p>Welcome to the SASOL Advanced Alkylates Economics Tool Login Page</p>
           </div>
         </CCol>
       </div>
