@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { AppContent, AppHeader } from '../components/index'
 import { useDispatch, useSelector } from 'react-redux'
 import { checkAuthenticated } from './../actions/auth'
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router-dom'
 
 const DefaultLayout = () => {
   const dispatch = useDispatch()
