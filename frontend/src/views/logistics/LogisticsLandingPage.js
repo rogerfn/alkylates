@@ -51,229 +51,9 @@ const LogisticsLandingPage = () => {
               {/* </Typing> */}
             </CCol>
           </div>
-        </CRow>
-        {/* <div
-          style={{
-            position: 'relative',
-            height: '400px',
-            width: '100%',
-            display: 'flex',
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'middle',
-          }}
-        >
-          <ReactCardCarousel autoplay={true} autoplay_speed={5000} spread={'wide'}>
-            <div
-              style={{
-                height: '300px',
-                width: '300px',
-                textAlign: 'center',
-                background: 'linear-gradient(to right, #141e30, #243b55)',
-                color: '#FFF',
-                fontFamily: 'sans-serif',
-                fontSize: '12px',
-                textTransform: 'uppercase',
-                borderRadius: '10px',
-                boxSizing: 'border-box',
-                display: 'flex',
-                flexDirection: 'column',
-                alignContent: 'center',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <CButton color="transparent" href="#/logistics">
-                <div
-                  style={{
-                    backdropFilter: 'blur( 4px )',
-                    borderRadius: '0.75rem',
-                    color: 'white',
-                    padding: '0.5rem',
-                    fontSize: '20px',
-                    fontWeight: 'bolder',
-                    width: '145px',
-                    textAlign: 'center',
-                  }}
-                >
-                  Logistics
-                </div>
-                <img
-                  style={{
-                    height: '145px',
-                  }}
-                  src={trucking}
-                ></img>
-              </CButton>
-            </div>
-            <div
-              style={{
-                height: '300px',
-                width: '300px',
-                textAlign: 'center',
-                background: 'linear-gradient(to right, #141e30, #243b55)',
-                color: '#FFF',
-                fontFamily: 'sans-serif',
-                fontSize: '12px',
-                textTransform: 'uppercase',
-                borderRadius: '10px',
-                boxSizing: 'border-box',
-                display: 'flex',
-                flexDirection: 'column',
-                alignContent: 'center',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <CButton color="transparent" href="#/production">
-                <div
-                  style={{
-                    backdropFilter: 'blur( 4px )',
-                    borderRadius: '0.75rem',
-                    color: 'white',
-                    padding: '0.5rem',
-                    fontSize: '20px',
-                    fontWeight: 'bolder',
-                    width: '145px',
-                    textAlign: 'center',
-                  }}
-                >
-                  Production
-                </div>
-                <img
-                  style={{
-                    height: '145px',
-                  }}
-                  src={savage}
-                ></img>
-              </CButton>
-            </div>
-            <div
-              style={{
-                height: '300px',
-                width: '300px',
-                textAlign: 'center',
-                background: 'linear-gradient(to right, #141e30, #243b55)',
-                color: '#FFF',
-                fontFamily: 'sans-serif',
-                fontSize: '12px',
-                textTransform: 'uppercase',
-                borderRadius: '10px',
-                boxSizing: 'border-box',
-                display: 'flex',
-                flexDirection: 'column',
-                alignContent: 'center',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <CButton color="transparent" href="#/inputs">
-                <div
-                  style={{
-                    backdropFilter: 'blur( 4px )',
-                    borderRadius: '0.75rem',
-                    color: 'white',
-                    padding: '0.5rem',
-                    fontSize: '20px',
-                    fontWeight: 'bolder',
-                    width: '145px',
-                    textAlign: 'center',
-                  }}
-                >
-                  Inputs
-                </div>
-                <img
-                  style={{
-                    height: '145px',
-                  }}
-                  src={kpi}
-                ></img>
-              </CButton>
-            </div> */}
-        {/* <div
-              style={{
-                height: '300px',
-                width: '300px',
-                textAlign: 'center',
-                background: 'linear-gradient(to right, #141e30, #243b55)',
-                color: '#FFF',
-                fontFamily: 'sans-serif',
-                fontSize: '12px',
-                textTransform: 'uppercase',
-                borderRadius: '10px',
-                boxSizing: 'border-box',
-                display: 'flex',
-                flexDirection: 'column',
-                alignContent: 'center',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <div
-                style={{
-                  backdropFilter: 'blur( 4px )',
-                  borderRadius: '0.75rem',
-                  color: 'white',
-                  padding: '0.5rem',
-                  fontSize: '20px',
-                  fontWeight: 'bolder',
-                  width: '145px',
-                  textAlign: 'center',
-                }}
-              >
-                Placeholder
-              </div>
-              <img
-                style={{
-                  height: '145px',
-                }}
-                src={trucking}
-              ></img>
-            </div> */}
-        {/* <div
-              style={{
-                height: '300px',
-                width: '300px',
-                textAlign: 'center',
-                background: 'linear-gradient(to right, #141e30, #243b55)',
-                color: '#FFF',
-                fontFamily: 'sans-serif',
-                fontSize: '12px',
-                textTransform: 'uppercase',
-                borderRadius: '10px',
-                boxSizing: 'border-box',
-                display: 'flex',
-                flexDirection: 'column',
-                alignContent: 'center',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <div
-                style={{
-                  backdropFilter: 'blur( 4px )',
-                  borderRadius: '0.75rem',
-                  color: 'white',
-                  padding: '0.5rem',
-                  fontSize: '20px',
-                  fontWeight: 'bolder',
-                  width: '145px',
-                  textAlign: 'center',
-                }}
-              >
-                Placeholder
-              </div>
-              <img
-                style={{
-                  height: '145px',
-                }}
-                src={kpi}
-              ></img>
-            </div> */}
-        {/* </ReactCardCarousel>
-        </div> */}
+        </CRow>       
         <CRow>
-          <div style={{ marginTop: '2rem', marginBottom: '2rem', display: 'flex' }}>
+          <div style={{ marginTop: '1rem', marginBottom: '1rem', display: 'flex' }}>
             <CCol
               style={{
                 display: 'flex',
@@ -298,7 +78,7 @@ const LogisticsLandingPage = () => {
                       borderRadius: '10px',
                       border: '1px solid rgba( 255, 255, 255, 0.18 )',
                     }}
-                    src={trucking}
+                    src={kpi}
                   ></img>
                 </div>
                 <div
@@ -317,7 +97,9 @@ const LogisticsLandingPage = () => {
                     textAlign: 'center',
                   }}
                 >
-                  Homolog Balance
+                  Homolog Balance <br />
+                  &nbsp;
+
                 </div>
               </CButton>
             </CCol>
@@ -343,7 +125,7 @@ const LogisticsLandingPage = () => {
                       borderRadius: '10px',
                       border: '1px solid rgba( 255, 255, 255, 0.18 )',
                     }}
-                    src={savage}
+                    src={kpi}
                   ></img>
                 </div>
                 <div
@@ -364,7 +146,7 @@ const LogisticsLandingPage = () => {
                     textAlign: 'center',
                   }}
                 >
-                  LAB NB & Cost Per Volume
+                  LAB NB &amp; Cost Per Volume
                 </div>
               </CButton>
             </CCol>
@@ -412,6 +194,403 @@ const LogisticsLandingPage = () => {
                   }}
                 >
                   Lab forecast Per Cost
+                </div>
+              </CButton>
+            </CCol>
+            <CCol
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignContent: 'center',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <CButton color="transparent" href="#/inputs">
+                <div style={icon_div_style}>
+                  <img
+                    style={{
+                      height: '145px',
+                      backgroundColor: '#243b55',
+                      /* background: rgba( 255, 255, 255, 0.3 ); */
+                      boxShadow: '0 8px 32px 0 rgb(31 38 135 / 37%)',
+                      backdropFilter: 'blur( 4px )',
+                      borderRadius: '10px',
+                      border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                    }}
+                    src={kpi}
+                  ></img>
+                </div>
+                <div
+                  style={{
+                    backgroundColor: '#243b55',
+                    marginBottom: '1.25rem',
+                    marginTop: '1rem',
+                    /* background: rgba( 255, 255, 255, 0.3 ); */
+                    boxShadow: '0 8px 32px 0 rgb(31 38 135 / 37%)',
+                    backdropFilter: 'blur( 4px )',
+                    borderRadius: '0.75rem',
+                    border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                    color: 'white',
+                    padding: '0.5rem',
+                    fontSize: '16px',
+                    fontWeight: 'bolder',
+                    width: '145px',
+                    textAlign: 'center',
+                  }}
+                >
+                  LAB Forecast VC Per Source
+                </div>
+              </CButton>
+            </CCol>
+          </div>
+        </CRow>
+        <CRow>
+          <div style={{ marginTop: '1rem', marginBottom: '1rem', display: 'flex' }}>
+          <CCol
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignContent: 'center',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <CButton color="transparent" href="#/logistics">
+                <div style={icon_div_style}>
+                  <img
+                    style={{
+                      height: '145px',
+                      backgroundColor: '#243b55',
+                      marginBottom: '1.25rem',
+                      marginTop: '1rem',
+                      /* background: rgba( 255, 255, 255, 0.3 ); */
+                      boxShadow: '0 8px 32px 0 rgb(31 38 135 / 37%)',
+                      backdropFilter: 'blur( 4px )',
+                      borderRadius: '10px',
+                      border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                    }}
+                    src={kpi}
+                  ></img>
+                </div>
+                <div
+                  style={{
+                    backgroundColor: '#243b55',
+                    /* background: rgba( 255, 255, 255, 0.3 ); */
+                    boxShadow: '0 8px 32px 0 rgb(31 38 135 / 37%)',
+                    backdropFilter: 'blur( 4px )',
+                    borderRadius: '0.75rem',
+                    border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                    color: 'white',
+                    padding: '0.5rem',
+                    fontSize: '16px',
+                    fontWeight: 'bolder',
+                    width: '145px',
+                    textAlign: 'center',
+                  }}
+                >
+                 Sales Forcast Volume <br />
+                 View  <br />
+                 Update <br />
+                </div>
+              </CButton>
+            </CCol>
+            <CCol
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignContent: 'center',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <CButton color="transparent" href="#/production">
+                <div style={icon_div_style}>
+                  <img
+                    style={{
+                      height: '145px',
+                      backgroundColor: '#243b55',
+                      /* background: rgba( 255, 255, 255, 0.3 ); */
+                      boxShadow: '0 8px 32px 0 rgb(31 38 135 / 37%)',
+                      backdropFilter: 'blur( 4px )',
+                      borderRadius: '10px',
+                      border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                    }}
+                    src={kpi}
+                  ></img>
+                </div>
+                <div
+                  style={{
+                    backgroundColor: '#243b55',
+                    marginBottom: '1.25rem',
+                    marginTop: '1rem',
+                    /* background: rgba( 255, 255, 255, 0.3 ); */
+                    boxShadow: '0 8px 32px 0 rgb(31 38 135 / 37%)',
+                    backdropFilter: 'blur( 4px )',
+                    borderRadius: '0.75rem',
+                    border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                    color: 'white',
+                    padding: '0.5rem',
+                    fontSize: '16px',
+                    fontWeight: 'bolder',
+                    width: '145px',
+                    textAlign: 'center',
+                  }}
+                >
+                 Sales LAB F/Cast Price <br />
+                 View <br />
+                 Update
+                </div>
+              </CButton>
+            </CCol>
+            <CCol
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignContent: 'center',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <CButton color="transparent" href="#/inputs">
+                <div style={icon_div_style}>
+                  <img
+                    style={{
+                      height: '145px',
+                      backgroundColor: '#243b55',
+                      /* background: rgba( 255, 255, 255, 0.3 ); */
+                      boxShadow: '0 8px 32px 0 rgb(31 38 135 / 37%)',
+                      backdropFilter: 'blur( 4px )',
+                      borderRadius: '10px',
+                      border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                    }}
+                    src={kpi}
+                  ></img>
+                </div>
+                <div
+                  style={{
+                    backgroundColor: '#243b55',
+                    marginBottom: '1.25rem',
+                    marginTop: '1rem',
+                    /* background: rgba( 255, 255, 255, 0.3 ); */
+                    boxShadow: '0 8px 32px 0 rgb(31 38 135 / 37%)',
+                    backdropFilter: 'blur( 4px )',
+                    borderRadius: '0.75rem',
+                    border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                    color: 'white',
+                    padding: '0.5rem',
+                    fontSize: '16px',
+                    fontWeight: 'bolder',
+                    width: '145px',
+                    textAlign: 'center',
+                  }}
+                >
+                  RM Pricing Assumptions <br />
+                  View <br />
+                  Update 
+                </div>
+              </CButton>
+            </CCol>
+            <CCol
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignContent: 'center',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <CButton color="transparent" href="#/inputs">
+                <div style={icon_div_style}>
+                  <img
+                    style={{
+                      height: '145px',
+                      backgroundColor: '#243b55',
+                      /* background: rgba( 255, 255, 255, 0.3 ); */
+                      boxShadow: '0 8px 32px 0 rgb(31 38 135 / 37%)',
+                      backdropFilter: 'blur( 4px )',
+                      borderRadius: '10px',
+                      border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                    }}
+                    src={kpi}
+                  ></img>
+                </div>
+                <div
+                  style={{
+                    backgroundColor: '#243b55',
+                    marginBottom: '1.25rem',
+                    marginTop: '1rem',
+                    /* background: rgba( 255, 255, 255, 0.3 ); */
+                    boxShadow: '0 8px 32px 0 rgb(31 38 135 / 37%)',
+                    backdropFilter: 'blur( 4px )',
+                    borderRadius: '0.75rem',
+                    border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                    color: 'white',
+                    padding: '0.5rem',
+                    fontSize: '16px',
+                    fontWeight: 'bolder',
+                    width: '145px',
+                    textAlign: 'center',
+                  }}
+                >
+                  Source Inputs Vol &amp; Price <br />
+                  View <br />
+                  Update 
+                </div>
+              </CButton>
+            </CCol>
+            <CCol
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignContent: 'center',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <CButton color="transparent" href="#/inputs">
+                <div style={icon_div_style}>
+                  <img
+                    style={{
+                      height: '145px',
+                      backgroundColor: '#243b55',
+                      /* background: rgba( 255, 255, 255, 0.3 ); */
+                      boxShadow: '0 8px 32px 0 rgb(31 38 135 / 37%)',
+                      backdropFilter: 'blur( 4px )',
+                      borderRadius: '10px',
+                      border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                    }}
+                    src={kpi}
+                  ></img>
+                </div>
+                <div
+                  style={{
+                    backgroundColor: '#243b55',
+                    marginBottom: '1.25rem',
+                    marginTop: '1rem',
+                    /* background: rgba( 255, 255, 255, 0.3 ); */
+                    boxShadow: '0 8px 32px 0 rgb(31 38 135 / 37%)',
+                    backdropFilter: 'blur( 4px )',
+                    borderRadius: '0.75rem',
+                    border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                    color: 'white',
+                    padding: '0.5rem',
+                    fontSize: '16px',
+                    fontWeight: 'bolder',
+                    width: '145px',
+                    textAlign: 'center',
+                  }}
+                >
+                  Database Feed <br />
+                  View <br />
+                  Update <br />
+
+                </div>
+              </CButton>
+            </CCol>
+            <CCol
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignContent: 'center',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <CButton color="transparent" href="#/inputs">
+                <div style={icon_div_style}>
+                  <img
+                    style={{
+                      height: '145px',
+                      backgroundColor: '#243b55',
+                      /* background: rgba( 255, 255, 255, 0.3 ); */
+                      boxShadow: '0 8px 32px 0 rgb(31 38 135 / 37%)',
+                      backdropFilter: 'blur( 4px )',
+                      borderRadius: '10px',
+                      border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                    }}
+                    src={kpi}
+                  ></img>
+                </div>
+                <div
+                  style={{
+                    backgroundColor: '#243b55',
+                    marginBottom: '1.25rem',
+                    marginTop: '1rem',
+                    /* background: rgba( 255, 255, 255, 0.3 ); */
+                    boxShadow: '0 8px 32px 0 rgb(31 38 135 / 37%)',
+                    backdropFilter: 'blur( 4px )',
+                    borderRadius: '0.75rem',
+                    border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                    color: 'white',
+                    padding: '0.5rem',
+                    fontSize: '16px',
+                    fontWeight: 'bolder',
+                    width: '145px',
+                    textAlign: 'center',
+                  }}
+                >
+                  Database FP Spec <br />
+                  View <br />
+                  Update <br />
+
+                </div>
+              </CButton>
+            </CCol>
+            <CCol
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignContent: 'center',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <CButton color="transparent" href="#/inputs">
+                <div style={icon_div_style}>
+                  <img
+                    style={{
+                      height: '145px',
+                      backgroundColor: '#243b55',
+                      /* background: rgba( 255, 255, 255, 0.3 ); */
+                      boxShadow: '0 8px 32px 0 rgb(31 38 135 / 37%)',
+                      backdropFilter: 'blur( 4px )',
+                      borderRadius: '10px',
+                      border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                    }}
+                    src={kpi}
+                  ></img>
+                </div>
+                <div
+                  style={{
+                    backgroundColor: '#243b55',
+                    marginBottom: '1.25rem',
+                    marginTop: '1rem',
+                    /* background: rgba( 255, 255, 255, 0.3 ); */
+                    boxShadow: '0 8px 32px 0 rgb(31 38 135 / 37%)',
+                    backdropFilter: 'blur( 4px )',
+                    borderRadius: '0.75rem',
+                    border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                    color: 'white',
+                    padding: '0.5rem',
+                    fontSize: '16px',
+                    fontWeight: 'bolder',
+                    width: '145px',
+                    textAlign: 'center',
+                  }}
+                >
+                  Planning Inputs <br />
+                  View <br />
+                  Update <br />
+
                 </div>
               </CButton>
             </CCol>
