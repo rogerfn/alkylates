@@ -2,6 +2,10 @@ import React from 'react'
 import TheUserInputs from './views/inputs/inputs'
 import LogisticsDashboard from './views/logistics/logistics_dashboard'
 import LogisticsLandingPage from './views/logistics/LogisticsLandingPage'
+import LabSalesForecastPrice from './views/welcome/LabSalesForecastPrice'
+import FeedstockConsumptionYield from './views/welcome/FeedstockConsumptionYield'
+import WelcomePage from './views/welcome/WelcomePage'
+import np from './views/welcome/np'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Units = React.lazy(() => import('./views/units/Units'))
@@ -54,7 +58,10 @@ const Toasts = React.lazy(() => import('./views/notifications/toasts/Toasts'))
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
 const routes = [
-  { path: '/', exact: true, name: 'Welcome', component: LogisticsLandingPage },
+  { path: '/np', exact: true, name: 'np', component: np },
+  { path: '/', exact: true, name: 'Welcome', component: WelcomePage },
+  { path: '/lab', exact: true, name: 'Welcome', component: LabSalesForecastPrice },
+  { path: '/feed', exact: true, name: 'Welcome', component: FeedstockConsumptionYield },
   { path: '/production', name: 'Production', component: Dashboard, exact: true },
   { path: '/production/unit', name: 'Unit', component: Units },
   { path: '/theme', name: 'Theme', component: Colors, exact: true },

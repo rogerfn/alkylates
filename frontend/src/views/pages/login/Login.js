@@ -122,7 +122,6 @@ const Login = () => {
           borderWidth: '0.7rem',
           borderColor: 'white',
           borderRadius: '5rem',
-          borderColor: 'white',
           marginBottom: '1.25rem',
           marginTop: '1rem',
           left: '37.5%',
