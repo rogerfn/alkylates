@@ -6,6 +6,8 @@ import LabSalesForecastPrice from './views/welcome/LabSalesForecastPrice'
 import FeedstockConsumptionYield from './views/welcome/FeedstockConsumptionYield'
 import WelcomePage from './views/welcome/WelcomePage'
 import np from './views/welcome/np'
+import RawMaterialPrice from './views/welcome/RawMaterialPrice'
+import FeedStockQuality from './views/welcome/FeedStockQuality'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Units = React.lazy(() => import('./views/units/Units'))
@@ -61,6 +63,9 @@ const routes = [
   { path: '/np', exact: true, name: 'np', component: np },
   { path: '/', exact: true, name: 'Welcome', component: WelcomePage },
   { path: '/lab', exact: true, name: 'Welcome', component: LabSalesForecastPrice },
+  { path: '/feed', exact: true, name: 'Welcome', component: FeedstockConsumptionYield },
+  { path: '/raw', exact: true, name: 'Welcome', component: RawMaterialPrice },
+  { path: '/feedQuality', exact: true, name: 'Welcome', component: FeedStockQuality },
   { path: '/feed', exact: true, name: 'Welcome', component: FeedstockConsumptionYield },
   { path: '/production', name: 'Production', component: Dashboard, exact: true },
   { path: '/production/unit', name: 'Unit', component: Units },

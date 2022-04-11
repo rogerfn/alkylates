@@ -152,7 +152,7 @@ const WelcomePage = () => {
                                 Lab Sales Forecast &amp; Price
                             </CCardTitle>
                             <ul style={{ listStyle: 'none', display: 'flex', flexWrap: 'wrap', gap: '2px'}}>
-                                <li><a href={'/'}><CButton
+                                <li><a href={'/#lab'}><CButton
                                     style={{
                                         backgroundColor: 'rgba(44, 56, 74, 0.95)',
                                         borderColor: 'rgba(44, 56, 74, 0.95)',
@@ -179,7 +179,7 @@ const WelcomePage = () => {
                                 Feed Stock Quality
                             </CCardTitle>
                             <ul style={{ listStyle: 'none', display: 'flex', flexWrap: 'wrap', gap: '2px'}}>
-                                <li><a href={'/'}><CButton
+                                <li><a href={'/#feedQuality'}><CButton
                                     style={{
                                         backgroundColor: 'rgba(44, 56, 74, 0.95)',
                                         borderColor: 'rgba(44, 56, 74, 0.95)',
@@ -204,7 +204,7 @@ const WelcomePage = () => {
                                 Raw Material Price
                             </CCardTitle>
                             <ul style={{ listStyle: 'none', display: 'flex', flexWrap: 'wrap', gap: '2px'}}>
-                                <li><a href={'/'}><CButton
+                                <li><a href={'/#raw'}><CButton
                                     style={{
                                     backgroundColor: 'rgba(44, 56, 74, 0.95)',
                                     borderColor: 'rgba(44, 56, 74, 0.95)',
