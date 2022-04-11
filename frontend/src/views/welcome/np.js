@@ -39,6 +39,28 @@ const WelcomePage = () => {
                         </CCol>
                     </div>
                 </CRow>
+                <div>
+                    <div style={{ height: '200px', marginTop: '1rem', marginBottom: '1rem', marginRight: '4px', float: 'left',width: '20%', background: 'whitesmoke' }}>
+                        <CCardTitle style={{ fontSize: '1em', color: 'rgb(1, 58, 99)' }}>
+                            <a href={'/#np'}>nP Actual/Forecast Volume &amp; Cost</a>
+                        </CCardTitle>
+                    </div>
+                    <div style={{ height: '200px', marginTop: '1rem', marginBottom: '1rem', marginRight: '4px', float: 'left',width: '20%', background: 'whitesmoke'  }}>
+                        <CCardTitle style={{ fontSize: '1em', color: 'rgb(1, 58, 99)' }}>
+                            LAB Actual/forecast Volume &amp; Cost
+                        </CCardTitle>
+                    </div>
+                    <div style={{ height: '200px', marginTop: '1rem', marginBottom: '1rem', marginRight: '4px', float: 'left',width: '20%', background: 'whitesmoke'  }}>
+                        <CCardTitle style={{ fontSize: '1em', color: 'rgb(1, 58, 99)' }}>
+                            LAB NB &amp; Cost Per Volume
+                        </CCardTitle>
+                    </div>
+                    <div style={{ height: '200px', marginTop: '1rem', marginBottom: '1rem', marginRight: '4px', float: 'left', width: '20%', background: 'whitesmoke'  }}>
+                        <CCardTitle style={{ fontSize: '1em', color: 'rgb(1, 58, 99)' }}>
+                            Homologue Balance
+                        </CCardTitle>
+                    </div>
+                </div>
 
             </div>
         </>
