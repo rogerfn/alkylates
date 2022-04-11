@@ -127,7 +127,7 @@ const WelcomePage = () => {
                                 Feedstock Consumption / Yield
                             </CCardTitle>
                             <ul style={{ listStyle: 'none', display: 'flex', flexWrap: 'wrap', gap: '2px'}}>
-                                <li><a href={'/'}><CButton
+                                <li><a href={'/#feed'}><CButton
                                     style={{
                                         backgroundColor: 'rgba(44, 56, 74, 0.95)',
                                         borderColor: 'rgba(44, 56, 74, 0.95)',
