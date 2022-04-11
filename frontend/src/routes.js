@@ -8,6 +8,10 @@ import WelcomePage from './views/welcome/WelcomePage'
 import np from './views/welcome/np'
 import RawMaterialPrice from './views/welcome/RawMaterialPrice'
 import FeedStockQuality from './views/welcome/FeedStockQuality'
+import ActualForecastVolumeAndCost from "./views/np/ActualForecastVolumeAndCost";
+import HomologBalance from "./views/np/HomologBalance";
+import LabActualVolumeAndCost from "./views/np/LabActualVolumeAndCost";
+import LabNbAndCostPerVolume from "./views/np/LabNbAndCostPerVolume";
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Units = React.lazy(() => import('./views/units/Units'))
@@ -61,6 +65,10 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
 const routes = [
   { path: '/np', exact: true, name: 'np', component: np },
+  { path: '/np/actualforcastvolumeandcost', exact: true, name: 'Actual Volume and Cost', component: ActualForecastVolumeAndCost },
+  { path: '/np/homologBalance', exact: true, name: 'Homologue Balance', component: HomologBalance },
+  { path: '/np/labActualVolumeAndCost', exact: true, name: 'Lab Actual Volume And Cost', component: LabActualVolumeAndCost },
+  { path: '/np/labNbAndCostPerVolume', exact: true, name: 'LAB NB and Cost per Volume', component: LabNbAndCostPerVolume },
   { path: '/', exact: true, name: 'Welcome', component: WelcomePage },
   { path: '/lab', exact: true, name: 'Welcome', component: LabSalesForecastPrice },
   { path: '/feed', exact: true, name: 'Welcome', component: FeedstockConsumptionYield },
