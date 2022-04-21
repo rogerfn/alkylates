@@ -2,7 +2,7 @@
 FROM node:16.13-alpine3.12 as build-deps
 WORKDIR /usr/src/app
 COPY package.json ./
-RUN npm install
+RUN npm install --legacy-peer-deps
 COPY . ./
 
 ARG MODE=production
