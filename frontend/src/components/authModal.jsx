@@ -25,7 +25,7 @@ function AuthModal() {
         </div>
         <Input type="text" placeholder="Password" />
       </div>
-      <p className="authModal__createAccount">Not registered yet? </p>
+      <p className="authModal__createAccount"></p>
       <NavLink to="/home" style={{ textDecoration: "none" }}>
         <Button type="button" value="Login" />
       </NavLink>
