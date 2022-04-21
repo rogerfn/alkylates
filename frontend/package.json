@@ -21,6 +21,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build_testing": "REACT_APP_MODE=testing  react-scripts build",
+    "build_production": "REACT_APP_MODE=production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
