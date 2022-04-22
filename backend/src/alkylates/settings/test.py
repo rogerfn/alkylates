@@ -4,6 +4,9 @@ from dotenv import load_dotenv
 
 load_dotenv( dotenv_path = BASE_DIR / '.env.test', verbose=True)
 
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 DATABASES = {
     'default': {
         "ENGINE":  "django.db.backends.postgresql",
@@ -14,3 +17,5 @@ DATABASES = {
         "PORT": os.getenv("DB_PORT"),
     }
 }
+
+

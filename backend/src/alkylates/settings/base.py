@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
+import ldap
+import os
+from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -26,7 +31,7 @@ SECRET_KEY = 'django-insecure-_3miw7cq2@xp8cpiy9zxr9-#d!voj=m2_f(c**z94zjd=7wbkd
 DEBUG = True
 
 ALLOWED_HOSTS = ['alkylates.chemicals-digital.sasol.com', 'alkylates-test.chemicals-digital.sasol.com',
-                 'alkylates-api.chemicals-digital.sasol.com', 'alkylates-test-api.chemicals-digital.sasol.com']
+                 'alkylates-api.chemicals-digital.sasol.com', 'alkylates-test-api.chemicals-digital.sasol.com','127.0.0.1','localhost']
 
 
 # Application definition
@@ -39,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'core'
 ]
 
 MIDDLEWARE = [
@@ -52,6 +58,50 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTHENTICATION_BACKENDS = [
+    "django_auth_ldap.backend.LDAPBackend",
+    "django.contrib.auth.backends.ModelBackend"
+]
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=3),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=5),
+}
+
+
+AUTH_LDAP_SERVER_URI = 'ldap://scd.sasol.com:389'
+AUTH_LDAP_ALWAYS_UPDATE_USER = True
+AUTH_LDAP_BIND_DN = os.getenv('LDAP_USER', '')
+AUTH_LDAP_BIND_PASSWORD = os.getenv('LDAP_PASS', '')
+AUTH_LDAP_USER_SEARCH = LDAPSearch(
+    "dc=scd,dc=sasol,dc=com", ldap.SCOPE_SUBTREE, "(sAMAccountName=%(user)s)"
+)
+
+AUTH_LDAP_GROUP_SEARCH = LDAPSearch(
+    "OU=Groups,OU=Global Identities INT,DC=scd,DC=sasol,DC=com", ldap.SCOPE_SUBTREE, "(objectClass=group)"
+)
+
+AUTH_LDAP_GROUP_TYPE = GroupOfNamesType()
+
+AUTH_LDAP_CONNECTION_OPTIONS = {ldap.OPT_REFERRALS: 0}
+AUTH_LDAP_USER_ATTR_MAP = {
+    "username": "sAMAccountName",
+    "first_name": "givenName",
+    "last_name": "sn",
+    "email": "mail",
+}
+
 
 ROOT_URLCONF = 'alkylates.urls'
 
