@@ -1,0 +1,71 @@
+.navbar__container{
+    background: rgba( 255, 255, 255, 0 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    height: 60px;
+    position: sticky;
+    top: 0;
+  z-index: 10;
+    
+}
+.navbar__items{  
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: 1rem;
+}
+
+.navbar__logo{
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.navbar__menu{
+    display: flex;
+    list-style: none;
+    text-align: center;
+    width: 70vw;
+    justify-content: end;
+    margin-right: 2rem;
+    gap: 2rem;
+
+}
+
+.navbar__links{
+    color: #000;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+
+}
+
+.navbar__links:hover{
+    background: rgba( 11, 140, 213, 0 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    transition: all 0.2s ease-out;
+    
+}
+
+.navbar__sidebarMenu{
+    background-color: #060b26;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+}
+
+.navbar__sidebarMenu.active{
+    left: 0;
+    transition: 350ms;
+}
