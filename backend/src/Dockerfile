@@ -4,11 +4,9 @@ FROM python:3.9
 # set work directory
 WORKDIR /app/
 
-# Install odbc driver
-RUN apt-get install -y unixodbc unixodbc-dev openssl
 
 RUN apt-get update \
-  && apt-get upgrade -y && apt-get install -y libsasl2-dev libldap2-dev libssl-dev poppler-utils postgresql-client-13 odbc-postgresql
+  && apt-get upgrade -y && apt-get install -y unixodbc unixodbc-dev openssl libsasl2-dev libldap2-dev libssl-dev poppler-utils postgresql-client-13 odbc-postgresql
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
