@@ -327,7 +327,7 @@ class make_calculations:
         try:
             return self.input.df_plan_dict[category].loc[fs][date].values[0]                          
         except:
-            print(f'ERROR: get_from_input_table for {category, fs, date}')
+            #print(f'ERROR: get_from_input_table for {category, fs, date}')
             return 0 
 
 

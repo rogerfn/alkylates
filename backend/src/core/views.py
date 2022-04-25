@@ -1,4 +1,5 @@
 import requests
+from copy import deepcopy
 import pandas as pd
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -10,12 +11,11 @@ from core.utils.make_calculations import make_calculations
 class GetQualityView(APIView):
     """
     # http://127.0.0.1:8000/core/get_quality
-    # Provides the quality data shown in the DATABASE FEED sheet in excel on the left side (white part)
-    #
-    #  [{"site":"Augusta","feedstock":"EGCP","C10":3.98,"C11":2.93,"C12":2.51,"C13":1.56,"C14":1.29,"C15":0.26,"C16":0.02,"C17":0.0,"C18+":0.0,"C9-":3.32,"TNP":15.87},
-    #   {"site":"Augusta","feedstock":"ENI Livorno","C10":4.6713325301,"C11":7.7607264846,"C12":5.5956513226,"C13":2.5999341532,"C14":0.2074277876,"C15":0.0268719887,"C16":0.04,"C17":0.0,"C18+":0.0,"C9-":2.0240997792,"TNP":22.9260440459},
-    #   {"site":"Augusta","feedstock":"ENI Taranto","C10":7.13,"C11":9.49,"C12":6.71,"C13":3.37,"C14":0.71,"C15":0.07,"C16":0.01,"C17":0.0,"C18+":0.0,"C9-":2.91,"TNP":30.4}
-    # ....
+
+    Provides the quality data shown in the DATABASE FEED sheet in excel on the left side (white part)
+
+    {\"('Augusta', 'EGCP')\":{\"C10\":3.98,\"C11\":2.93, ..... \"TNP\":15.87},
+     \"('Augusta', 'ENI Livorno')\":{\"C10\":4.6713325301,\"C11\" .....
 
     """
     permission_classes = [IsAuthenticated]
@@ -27,13 +27,7 @@ class GetQualityView(APIView):
         self.data_module = make_calculations()
         self.data_module.get_update_input()
         res = self.data_module.input.data_hom.copy()
-
-        if res.shape[0] > 0:
-            res.reset_index(inplace=True)
-            res = res.to_dict()
-        else:
-            res = {}
-
+        res = res.transpose().to_json()
         return Response(res)
 
     def post(self, request, format=None):
@@ -45,15 +39,13 @@ class GetPriceView(APIView):
     """
     # http://127.0.0.1:8000/get_price?Euro
     # http://127.0.0.1:8000/get_price?Dollar
-    #
-    # if no currency is added the default is Euro
-    #
-    # Provides the price data shown in the RM PRICE sheet in excel on the left side (white part)
-    #
-    # [{"index":0,"commodity":"Benzene EU","unit":"\u20ac\/mt","source":"Formula","1567296000000":763.9878941743,"1569888000000":695.0102697606,"1572566400000":611.5683818215,"1575158400000":583.6478648004,"1577836800000":636.8569674272,"1580515200000":738.5128486504,"1583020800000":661.3157967237,"1585699200000":167.7728901448,"1588291200000":224.0885083181,"1590969600000":290.0481498878,"1593561600000":366.4967342852,"1596240000000":372.55138837,"1598918400000":368.4,"1601510400000":350.0,"1604188800000":415.0,"1606780800000":867.525,"1609459200000":683.0,"1612137600000":599.0,"1614556800000":762.0,"1617235200000":992.0,"1619827200000":1361.0,"1622505600000":881.0,"1625097600000":813.0,"1627776000000":914.0,"1630454400000":833.0,"1633046400000":777.0,"1635724800000":835.0,"1638316800000":857.0,"1640995200000":1066.0,"1643673600000":981.0,"1646092800000":1001.0},
-    #  {"index":1,"commodity":"Benzene EU","unit":"\u20ac\/mt","source":"ICIS NWE contract","1567296000000":760.0,"1569888000000":695.0,"1572566400000":545.0,"1575158400000":615.0,"1577836800000":679.0,"1580515200000":742.0,"1583020800000":595.0,"1585699200000":171.0,"1588291200000":226.0,"1590969600000":293.0,"1593561600000":369.0,"1596240000000":375.0,"1598918400000":353.0,"1601510400000":353.0,"1604188800000":418.0,"1606780800000":870.525,"1609459200000":686.0,"1612137600000":602.0,"1614556800000":765.0,"1617235200000":995.0,"1619827200000":1364.0,"1622505600000":884.0,"1625097600000":816.0,"1627776000000":917.0,"1630454400000":836.0,"1633046400000":780.0,"1635724800000":838.0,"1638316800000":860.0,"1640995200000":1069.0,"1643673600000":984.0,"1646092800000":1004.0},
-    #  {"index":2,"commodity":"Benzinetta","unit":"\u20ac\/mt","source":"Formula","1567296000000":309.98,"1569888000000":337.26,"1572566400000":0.0,"1575158400000":360.08,"1577836800000":359.63,"1580515200000":354.76,"1583020800000":319.04,"1585699200000":319.04,"1588291200000":60.28,"1590969600000":146.51,"1593561600000":229.53,"1596240000000":255.5,"1598918400000":247.9,"1601510400000":253.925,"1604188800000":250.1833333333,"1606780800000":286.5,"1609459200000":338.23125,"1612137600000":372.96,"1614556800000":387.3206521739,"1617235200000":375.865,"1619827200000":400.3539473684,"1622505600000":430.85,"1625097600000":459.4784090909,"1627776000000":441.2833333333,"1630454400000":463.7261363636,"1633046400000":519.8833333333,"1635724800000":498.9011363636,"1638316800000":465.5083333333,"1640995200000":524.51875,"1643673600000":581.11375,"1646092800000":673.2090909091},
-    #  {"index":3,"commodity":"Brent","unit":"\u20ac\/bbl","source":"Platts","1567296000000":57.0584492319,"1569888000000":54.0314846648,"1572566400000":57.0228938558,"1575158400000":60.312246918,"1577836800000":57.2117117117,"1580515200000":50.8390646492,"1583020800000":28.7706770315,"1585699200000":17.073283005,"1588291200000":26.5813612181,"1590969600000":35.5975122168,"1593561600000":37.8216871674,"1596240000000":37.8965167399,"1598918400000":34.60542652,"1601510400000":34.5651160721,"1604188800000":36.0456322708,"1606780800000":40.9722763212,"1609459200000":45.0675178808,"1612137600000":51.4378528505,"1614556800000":55.1576847328,"1617235200000":54.0136571195,"1619827200000":56.5999740829,"1622505600000":60.6306313105,"1625097600000":63.473162104,"1627776000000":60.1594166124,"1630454400000":63.3647039742,"1633046400000":72.120953409,"1635724800000":71.3586530152,"1638316800000":65.5566477958,"1640995200000":77.0932728405,"1643673600000":86.5750006613,"1646092800000":108.2262157757},....
+    
+    if no currency is added the default is Euro
+    
+    Provides the price data shown in the RM PRICE sheet in excel on the left side (white part)
+    
+    "{\"('Benzene EU', '\\u20ac\\/mt', 'Formula')\":{\"1567296000000\":763.9878941743,\"1569888000000\":695.0102697606,......   
+    
     """
     permission_classes = [IsAuthenticated]
 
@@ -61,25 +53,17 @@ class GetPriceView(APIView):
         """
         reading price data
         """
-        print("reading price data")
+        print("GetPriceView in views: Reading price data")
+        #currency = request.values.get('currency', 'Euro')
+        currency = self.request.query_params.getlist('currency', 'Euro')
+        if currency not in ['Dollar','Euro']:
+            return Response('No valid currency, choose Euro or Dollar')
+
         self.data_module = make_calculations()
-        currency = request.values.get('currency', 'Euro')
-        try:
-            res = deepcopy(self.data_module.input.df_RMprice.copy())
-        except:
-            self.data_module.get_update_input()
-            res = deepcopy(self.data_module.input.df_RMprice.copy())
-
-        if currency not in res:
-            currency = "Euro"
+        self.data_module.get_update_input()
+        res = deepcopy(self.data_module.input.df_RMprice)
         res = res[currency]
-
-        if res.shape[0] > 0:
-            res.reset_index(inplace=True)
-            res = res.to_dict()
-        else:
-            res = {}
-
+        res = res.transpose().to_json()
         return Response(res)
 
     def post(self, request, format=None):
@@ -90,11 +74,11 @@ class GetPriceView(APIView):
 class GetInputsView(APIView):
     """
     # http://127.0.0.1:8000/get_inputs
-    # Provides the user input data shown in the DATABASE FEED sheet in excel on the right side (green/yellow part)
-    #
-    # [{"site":"Augusta","feedstock":"EGCP","% LnP":null,"Benzinetta yield (mt\/mt)":null,"C10 recovery":0.95,"C14 recovery":0.95,"C15 recovery":0.9,"C18+ recovery":null,"Electricity yield":252.7978031818,"Feed yield (mt\/mt)":8.7491669434,"Freight\/CIF-FOB premium":null,"Fuel Sarroch yield":null,"Gasoil yield (ton\/ton)":0,"H2 rich gas yield":null,"HnP adsorption recovery":null,"LnP adsorption recovery":0.93,"NG yield":461.8290617424,"Premium Return (S\/mt)":8.0,"Premium kero ($\/mt) Long-Term":22.0,"Premium kero ($\/mt) Med-Term":17.0,"Return yield (mt\/mt)":7.6906127122,"Useful HnP TnP":null,"Useful LnP TnP":0.1142965961,"Useful total TnP":null,"VN yield (ton\/ton)":0.0335542312,"density feed (kg\/mc)":0.8013,"density return (kg\/mc)":0.8079200664,"loses":0.025,"loses due to cracking":0.006,"nP purity":0.99},
-    #  {"site":"Augusta","feedstock":"ENI Livorno","% LnP":null,"Benzinetta yield (mt\/mt)":null,"C10 recovery":0.95,"C14 recovery":0.95,"C15 recovery":0.9,"C18+ recovery":null,"Electricity yield":184.4260770142,"Feed yield (mt\/mt)":5.1948833633,"Freight\/CIF-FOB premium":null,"Fuel Sarroch yield":null,"Gasoil yield (ton\/ton)":0,"H2 rich gas yield":null,"HnP adsorption recovery":null,"LnP adsorption recovery":0.93,"NG yield":328.5651925355,"Premium Return (S\/mt)":8.0,"Premium kero ($\/mt) Long-Term":22.0,"Premium kero ($\/mt) Med-Term":23.5,"Return yield (mt\/mt)":4.1483561508,"Useful HnP TnP":null,"Useful LnP TnP":0.1924971034,"Useful total TnP":null,"VN yield (ton\/ton)":0.0215272125,"density feed (kg\/mc)":0.7902666608,"density return (kg\/mc)":0.799865655,"loses":0.025,"loses due to cracking":0.006,"nP purity":0.99},
+    Provides the user input data shown in the DATABASE FEED sheet in excel on the right side (green/yellow part)
+    
+    "{\"('Augusta', 'EGCP')\":{\"% LnP\":null,\"Benzinetta yield (mt\\/mt)\":null,\"C10 recovery\":0.95,\"C14 recovery\":0.95,\"C15 recovery\":0.9, .....
     """
+
     permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
@@ -103,15 +87,12 @@ class GetInputsView(APIView):
         """
         print("reading userinput data")
         self.data_module = make_calculations()
-        try:
-            res = deepcopy(self.data_module.input.data_in.copy())
-        except:
-            self.data_module.get_update_input()
-            res = deepcopy(self.data_module.input.data_in.copy())
+        self.data_module.get_update_input()
+        res = deepcopy(self.data_module.input.data_in.copy())
 
         if res.shape[0] > 0:
-            res.reset_index(inplace=True)
-            res = res.to_dict()
+            #res.reset_index(inplace=True)
+            res = res.transpose().to_json()
         else:
             res = {}
 
@@ -125,11 +106,11 @@ class GetInputsView(APIView):
 class GetInputsEditableView(APIView):
     """
     # http://127.0.0.1:8000/get_inputs_editable
-    # Provides the information whether data can be edited by the user or whether they are calculated in the tool 
-    # refers to the colors shown in the DATABASE FEED sheet in excel on the right side (green/yellow part)
-    #
-    # [{"site":"Augusta","feedstock":"EGCP","% LnP":false,"Benzinetta yield (mt\/mt)":false,"C10 recovery":true,"C14 recovery":true,"C15 recovery":true,"C18+ recovery":false,"Electricity yield":true,"Feed yield (mt\/mt)":true,"Freight\/CIF-FOB premium":false,"Fuel Sarroch yield":false,"Gasoil yield (ton\/ton)":true,"H2 rich gas yield":false,"HnP adsorption recovery":false,"LnP adsorption recovery":true,"NG yield":true,"Premium Return (S\/mt)":true,"Premium kero ($\/mt) Long-Term":true,"Premium kero ($\/mt) Med-Term":true,"Return yield (mt\/mt)":true,"Useful HnP TnP":false,"Useful LnP TnP":true,"Useful total TnP":false,"VN yield (ton\/ton)":true,"density feed (kg\/mc)":true,"density return (kg\/mc)":true,"loses":true,"loses due to cracking":true,"nP purity":true},
-    #  {"site":"Augusta","feedstock":"ENI Livorno","% LnP":false,"Benzinetta yield .... 
+    
+    Provides the information whether data can be edited by the user or whether they are calculated in the tool 
+    refers to the colors shown in the DATABASE FEED sheet in excel on the right side (green/yellow part)
+    
+    "{\"('Augusta', 'EGCP')\":{\"% LnP\":false,\"Benzinetta yield (mt\\/mt)\":false,\"C10 recovery\":true,\"C14 recovery\":true,\"C15 recovery\":true,....
     """
     permission_classes = [IsAuthenticated]
 
@@ -139,16 +120,14 @@ class GetInputsEditableView(APIView):
         """
         print("reading userinput data")
         self.data_module = make_calculations()
-        try:
-            res = deepcopy(self.data_module.input.data_in_editable.copy())
-        except:
-            self.data_module.get_update_input()
-            res = deepcopy(self.data_module.input.data_in_editable.copy())
+        self.data_module.get_update_input()
+        res = deepcopy(self.data_module.input.data_in_editable.copy())
         res = res.replace(0, False)
         res = res.replace(1, True)
+        
         if res.shape[0] > 0:
-            res.reset_index(inplace=True)
-            res = res.to_dict()
+            #res.reset_index(inplace=True)
+            res = res.transpose().to_json()
         else:
             res = {}
 
@@ -164,12 +143,12 @@ class GetPlannedView(APIView):
     # http://127.0.0.1:8000/get_planned?ISOSIV
     # http://127.0.0.1:8000/get_planned?MOLEX
     # http://127.0.0.1:8000/get_planned?Kero_premium
-    # Provides the planning information shown in the excel INPUT sheet
-    # if you do not provide additional information the ISOSIV data are shown
-    #
-    # [{"index":0,"feedstock":"EGCP","unit":"mt","1567296000000":null,"1569888000000":null,"1572566400000":null,"1575158400000":null,"1577836800000":null,"1580515200000":null,"1583020800000":null,"1585699200000":null,"1590969600000":null,"1593561600000":null,"1596240000000":27535.426,"1598918400000":29180.395,"1601510400000":28000.0,"1604188800000":50900.0,"1606780800000":0.0,"1609459200000":0.0,"1612137600000":0.0,"1614556800000":0.0,"1617235200000":0.0,"1619827200000":0.0,"1622505600000":0.0,"1625097600000":0.0,"1627776000000":0.0,"1630454400000":0.0,"1633046400000":0.0,"1635724800000":0.0,"1638316800000":0.0},
-    #  {"index":1,"feedstock":"ENI Livorno","unit":"mt","1567296000000":null,"1569888000000":null,"1572566400000":null,"1575158400000":null,"1577836800000":null,"1580515200000":null,"1583020800000":null,"1585699200000":null,"1590969600000":9982.388,"1593561600000":null,"1596240000000":null,"1598918400000":9989.209,"1601510400000":10000.0,"1604188800000":0.0,"1606780800000":0.0,"1609459200000":0.0,"1612137600000":0.0,"1614556800000":10000.0,"1617235200000":0.0,"1619827200000":12000.0,"1622505600000":12000.0,"1625097600000":0.0,"1627776000000":0.0,"1630454400000":null,"1633046400000":null,"1635724800000":null,"1638316800000":12000.0},
-    #  {"index":2,"feedstock":"ENI ...    """
+    
+    Provides the planning information shown in the excel INPUT sheet
+    if you do not provide additional information the ISOSIV data are shown
+    
+    "{\"('EGCP', 'mt')\":{\"1567296000000\":null,\"1569888000000\":null,\"1572566400000\":null,\"1575158400000\":null,\"1577836800000\":null,\"1580515200000\":null,\"1583020800000\":null,\"1585699200000\":null,\"1590969600000....
+    """
     permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
@@ -178,21 +157,18 @@ class GetPlannedView(APIView):
         """
         print("reading userinput data")
         self.data_module = make_calculations()
-        source = request.values.get('source', 'ISOSIV')
+        source = self.request.query_params.getlist('source', 'ISOSIV')
 
-        try:
-            res = deepcopy(self.data_module.input.df_plan_dict.copy())
-        except:
-            self.data_module.get_update_input()
-            res = deepcopy(self.data_module.input.df_plan_dict.copy())
+        self.data_module.get_update_input()
+        res = deepcopy(self.data_module.input.df_plan_dict.copy())
 
-        if source not in res:
+        if source not in ['ISOSIV','MOLEX','Kero_premium']:
             source = "ISOSIV"
         res = res[source]
 
         if res.shape[0] > 0:
-            res.reset_index(inplace=True)
-            res = res.to_dict()
+            #res.reset_index(inplace=True)
+            res = res.transpose().to_json()
         else:
             res = {}
 
@@ -221,19 +197,8 @@ class GetResView(APIView):
     def get(self, request, format=None):
         """
         reading price data
-        """
-        print("reading userinput data")
-        self.data_module = make_calculations()
-        try:
-            self.data_module.input
-        except:
-            self.data_module.get_update_input()
 
-        try:
-            self.data_module.sona_plus_dict
-        except:
-            print("updating result values")
-            self.data_module.update_res()
+        "{\"EGCP\":{\"1567296000000\":709.7678601808,\"1569888000000\":686.9637062186,\"1572566400000\":690.5865758325,\"1575158400000\":687.9434998742,
 
         # levels:
         # category:
@@ -256,16 +221,25 @@ class GetResView(APIView):
             # 'Olefin purch'
             # 'Sarroch'
             # 'np purch'
+        """
 
-        category = request.values.get('category', 'Variable Costs')
-        currency = request.values.get('currency', 'Euro')
-        site = request.values.get('site', 'Augusta')
+        print("first calculating then reading results ")
+        site = self.request.query_params.getlist('site', ['Augusta'])[0]
+        currency = self.request.query_params.getlist('currency', ['Euro'])[0]
+        category = self.request.query_params.getlist('category', ['Variable Costs'])[0]
+
+        # print(site)
+        # print(currency)
+        # print(category)
+
+        self.data_module = make_calculations()
+        self.data_module.get_update_input()
+        self.data_module.update_res()
         res = self.data_module.res[category][currency][site].copy()
-        res.reset_index(inplace=True)
 
-        print("calc of one result done")
         if res.shape[0] > 0:
-            res = res.to_dict()
+            #res.reset_index(inplace=True)
+            res = res.transpose().to_json()
         else:
             res = {}
 
@@ -297,91 +271,3 @@ class GetUpdateResView(APIView):
         self.data_module.update_res()
         return Response({})
 
-
-class RunTests(APIView):
-    """
-    # http://127.0.0.1:8000/test
-    # runs alll available apis and returns 
-    # 
-    """
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request, format=None):
-        error = 0
-        r = requests.get("http://127.0.0.1:8000/core/get_quality?format=json")
-        print(r)
-        r = pd.DataFrame(r.json())
-        if r.shape[0] > 0:
-            print(r)
-        else:
-            error += 1
-        # return (Response(r))
-
-        r = requests.get(
-            "http://127.0.0.1:8000/core/get_price?Euro?format=json")
-        r = pd.DataFrame(r.json())
-        if r.shape[0] > 0:
-            print(r)
-        else:
-            error += 1
-
-        r = requests.get(
-            "http://127.0.0.1:8000/core/get_price?Dollar?format=json")
-        r = pd.DataFrame(r.json())
-        if r.shape[0] > 0:
-            print(r)
-        else:
-            error += 1
-
-        r = requests.get("http://127.0.0.1:8000/core/get_inputs?format=json")
-        r = pd.DataFrame(r.json())
-        if r.shape[0] > 0:
-            print(r)
-        else:
-            error += 1
-
-        r = requests.get(
-            "http://127.0.0.1:8000/core/get_inputs_editable?format=json")
-        r = pd.DataFrame(r.json())
-        if r.shape[0] > 0:
-            print(r)
-        else:
-            error += 1
-
-        r = requests.get(
-            "http://127.0.0.1:8000/core/get_planned?ISOSIV?format=json")
-        r = pd.DataFrame(r.json())
-        if r.shape[0] > 0:
-            print(r)
-        else:
-            error += 1
-
-        r = requests.get(
-            "http://127.0.0.1:8000/core/get_planned?MOLEX?format=json")
-        r = pd.DataFrame(r.json())
-        if r.shape[0] > 0:
-            print(r)
-        else:
-            error += 1
-
-        r = requests.get(
-            "http://127.0.0.1:8000/core/get_planned?Kero_premium?format=json")
-        r = pd.DataFrame(r.json())
-        if r.shape[0] > 0:
-            print(r)
-        else:
-            error += 1
-
-        r = requests.get(
-            "http://127.0.0.1:8000/core/get_res?category=Return Stream Price&currency=Euro&site=Augusta?format=json")
-        r = pd.DataFrame(r.json())
-        if r.shape[0] > 0:
-            print(r)
-        else:
-            error += 1
-
-        return Response('test done no errors')
-
-    def post(self, request, format=None):
-        print(request.data)
-        return Response(None)
