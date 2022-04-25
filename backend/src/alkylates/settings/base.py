@@ -34,7 +34,8 @@ ALLOWED_HOSTS = ['alkylates.chemicals-digital.sasol.com', 'alkylates-test.chemic
                  'alkylates-api.chemicals-digital.sasol.com', 'alkylates-test-api.chemicals-digital.sasol.com','127.0.0.1','localhost']
 
 
-CSRF_TRUSTED_ORIGINS = ALLOWED_HOSTS
+CSRF_TRUSTED_ORIGINS = ['https://alkylates.chemicals-digital.sasol.com', 'https://alkylates-test.chemicals-digital.sasol.com',
+                 'https://alkylates-api.chemicals-digital.sasol.com', 'https://alkylates-test-api.chemicals-digital.sasol.com','https://127.0.0.1','https://localhost']
 
 # Application definition
 
