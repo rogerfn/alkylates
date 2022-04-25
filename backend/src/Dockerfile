@@ -5,7 +5,7 @@ FROM python:3.9
 WORKDIR /app/
 
 RUN apt-get update \
-  && apt-get upgrade -y && apt-get install -y libsasl2-dev libldap2-dev libssl-dev poppler-utils postgresql-client-13
+  && apt-get upgrade -y && apt-get install -y libsasl2-dev libldap2-dev libssl-dev poppler-utils postgresql-client-13 odbc-postgresql
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
