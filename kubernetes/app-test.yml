@@ -63,9 +63,9 @@ spec:
           imagePullPolicy: IfNotPresent
 
     
-          # envFrom:
-          # - secretRef:
-          #     name: alkylates-test-secret
+          envFrom:
+          - secretRef:
+              name: alkylates-test-secret
 
           ports:
             - containerPort: 8000
