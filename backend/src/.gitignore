@@ -12,3 +12,4 @@ data/
 .env.production
 .idea/
 *.sqlite3
+../env
