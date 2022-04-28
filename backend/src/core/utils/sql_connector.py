@@ -160,6 +160,8 @@ class sql_connector:
         cols = [s if str(s)[-1] !=' ' else str(s) [:-1] for s in cols]
         data_in.columns = cols
         data_in = data_in.replace(np.nan,0)
+        data_in = data_in.replace(0,False)
+        data_in = data_in.replace(1,True)
         
         return data_in
     

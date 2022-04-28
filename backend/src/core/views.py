@@ -139,20 +139,25 @@ class GetInputsView(APIView):
         print("reading userinput data")
         self.data_module = make_calculations()
         self.data_module.get_update_input()
-        res = deepcopy(self.data_module.input.data_in.copy())
 
-        res.reset_index(inplace=True)
+        res = deepcopy(self.data_module.input.data_in.copy())
         res.replace(np.nan,0,inplace=True)
-        res = res.transpose()
-        res.reset_index(inplace=True)
+        # res.reset_index(inplace=True)
+        # res = res.transpose()
+        # res.reset_index(inplace=True)
 
         res2 = deepcopy(self.data_module.input.data_in_editable.copy())
-        res2 = res.replace(0, False)
-        res2 = res.replace(1, True)
-        res2 = res2.transpose()
-        res2.reset_index(inplace=True)
+        # res2.reset_index(inplace=True)
+        # res2.replace(np.nan,0,inplace=True)
+        # res2 = res2.transpose()
+        # res2.reset_index(inplace=True)
 
-        
+        for col in res:
+            res[col] = [ [str(round(a,3)),b] for (a,b) in zip(res[col].values,res2[col].values) ]
+
+        res.reset_index(inplace=True)
+        res = res.transpose()
+        res.reset_index(inplace=True)
 
 
         # if res.shape[0] > 0:
