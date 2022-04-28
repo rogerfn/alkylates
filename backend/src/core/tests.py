@@ -45,25 +45,6 @@ class WorkflowTestCase(APITestCase):
         response = self.client.get(reverse('get_price'))
         self.assertGreater(len(response.json())>1, 0)
         
-    def test_get_price_data(self):
-        self.client.force_authenticate(user=self.user)
-
-        # Check that we get data
-        print('\n... Testing price data for currency dollar')
-        price_data = {'value':'Dollar'}
-        response = self.client.get(reverse('get_price'),price_data)
-        self.assertGreater(len(response.json())>1, 0)
-        
-        # Check that we get data
-        print('\n... Testing price data for currency euro')
-        price_data = {'value':'Euro'}
-        response = self.client.get(reverse('get_price'),price_data)
-        self.assertGreater(len(response.json())>1, 0)
-        
-        # Check that we get data
-        print('\n... Testing price data for default')
-        response = self.client.get(reverse('get_price'))
-        self.assertGreater(len(response.json())>1, 0)        
         
     def test_get_input_data(self):
         self.client.force_authenticate(user=self.user)
@@ -73,13 +54,13 @@ class WorkflowTestCase(APITestCase):
         response = self.client.get(reverse('get_inputs'))
         self.assertGreater(len(response.json())>1, 0)
         
-    def test_get_input_editable_data(self):
-        self.client.force_authenticate(user=self.user)
+    # def test_get_input_editable_data(self):
+    #     self.client.force_authenticate(user=self.user)
 
-        # Check that we get data
-        print('\n... Testing input editable data')
-        response = self.client.get(reverse('get_inputs_editable'))
-        self.assertGreater(len(response.json())>1, 0)
+    #     # Check that we get data
+    #     print('\n... Testing input editable data')
+    #     response = self.client.get(reverse('get_inputs_editable'))
+    #     self.assertGreater(len(response.json())>1, 0)
 
 
     def test_get_plan_data(self):
