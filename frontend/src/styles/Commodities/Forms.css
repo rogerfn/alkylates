@@ -20,7 +20,7 @@ thead{
 
 th{
     color: #2c384a; 
-    padding: 1rem 2rem;
+    padding: 1rem 0.1rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     font-size: 0.7rem;
@@ -28,7 +28,7 @@ th{
 }
 
 td{
-    padding: 1rem 2rem;
+    padding: 0.1rem 0.2rem;
 }
 
 tr:nth-child(even){

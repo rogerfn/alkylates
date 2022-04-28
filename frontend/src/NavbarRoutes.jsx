@@ -8,8 +8,8 @@ import Lab from "./pages/lab";
 function RoutesPaths() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      {/* <Route path="/home" element={<Home />} /> */}
+      <Route path="/" element={<Auth />} />
+      <Route path="/home" element={<Home />} />
 
       <Route path="/homolog" element={<Homolog />} />
 
