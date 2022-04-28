@@ -1,5 +1,7 @@
+from re import S
 import requests
 from copy import deepcopy
+import numpy as np
 import pandas as pd
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -7,6 +9,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 from core.utils.make_calculations import make_calculations
 
+from .models import Homologues, Feedstock, Site
 
 class GetQualityView(APIView):
     """
@@ -30,15 +33,37 @@ class GetQualityView(APIView):
         """
         reading quality data values
         """
-        self.data_module = make_calculations()
-        self.data_module.get_update_input()
-        res = self.data_module.input.data_hom.copy()
-        res = res.transpose().to_json()
-        return Response(res)
+        #self.data_module = make_calculations()
+        #self.data_module.get_update_input()
+        #res = self.data_module.input.data_hom.copy()
+        quality = Homologues.objects.all()
+        #feedstock = Feedstock.objects.all()
+        #site = Site.objects.all()
+        data_hom = quality.distinct().values('site__name','feedstock__name','name','value')
+        data_hom = pd.DataFrame(data_hom)
+        data_hom.columns = ['site','feedstock','homologue','value']
+        data_hom.columns = ['site', 'feedstock', 'homologue', 'value']
+        data_hom = data_hom.pivot(index=['site','feedstock'], columns='homologue', values='value')
+        data_hom['TNP'] = data_hom.sum(axis=1)
+        data_hom = data_hom.reindex(sorted(data_hom.columns), axis=1)
+        #data_hom = data_hom.transpose().to_json()
+        
+        data_hom.reset_index(inplace=True)
+        #data_hom = data_hom
+        data_hom = data_hom.transpose()
+        data_hom.reset_index(inplace=True)
+
+        #data_hom = data_hom.to_dict()
+        #data_hom = data_hom.to_json()
+        #data_hom = data_hom.transpose().to_dict()
+        
+        return Response(data_hom)
 
     def post(self, request, format=None):
         print(request.data)
         return Response(None)
+
+
 
 
 class GetPriceView(APIView):
@@ -75,7 +100,14 @@ class GetPriceView(APIView):
         self.data_module.get_update_input()
         res = deepcopy(self.data_module.input.df_RMprice)
         res = res[currency]
-        res = res.transpose().to_json()
+        res = res.round(2)
+        #res = res.transpose().to_json()
+        res.reset_index(inplace=True)
+        res.replace(np.nan,0,inplace=True)
+        res = res.transpose()
+        res.reset_index(inplace=True)
+
+
         return Response(res)
 
     def post(self, request, format=None):
@@ -109,58 +141,69 @@ class GetInputsView(APIView):
         self.data_module.get_update_input()
         res = deepcopy(self.data_module.input.data_in.copy())
 
-        if res.shape[0] > 0:
-            #res.reset_index(inplace=True)
-            res = res.transpose().to_json()
-        else:
-            res = {}
+        res.reset_index(inplace=True)
+        res.replace(np.nan,0,inplace=True)
+        res = res.transpose()
+        res.reset_index(inplace=True)
 
-        return Response(res)
-
-    def post(self, request, format=None):
-        print(request.data)
-        return Response(None)
-
-
-class GetInputsEditableView(APIView):
-    """
-    ## local
-    # login first http://127.0.0.1:8000/admin
-    # http://127.0.0.1:8000/core/get_inputs_editable
-    
-    ## deployed
-    # login first: https://alkylates-test-api.chemicals-digital.sasol.com/admin
-    # https://alkylates-test-api.chemicals-digital.sasol.com/core/get_inputs_editable    
-
-    Provides the information whether data can be edited by the user or whether they are calculated in the tool 
-    refers to the colors shown in the DATABASE FEED sheet in excel on the right side (green/yellow part)
-    
-    "{\"('Augusta', 'EGCP')\":{\"% LnP\":false,\"Benzinetta yield (mt\\/mt)\":false,\"C10 recovery\":true,\"C14 recovery\":true,\"C15 recovery\":true,....
-    """
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request, format=None):
-        """
-        reading price data
-        """
-        print("reading userinput data")
-        self.data_module = make_calculations()
-        self.data_module.get_update_input()
         res = deepcopy(self.data_module.input.data_in_editable.copy())
         res = res.replace(0, False)
         res = res.replace(1, True)
-        
-        if res.shape[0] > 0:
-            #res.reset_index(inplace=True)
-            res = res.transpose().to_json()
-        else:
-            res = {}
+
+
+        # if res.shape[0] > 0:
+        #     #res.reset_index(inplace=True)
+        #     #res = res.transpose().to_json()
+        #     res = res.transpose().to_dict()
+        # else:
+        #     res = {}
 
         return Response(res)
 
     def post(self, request, format=None):
         print(request.data)
         return Response(None)
+
+
+# class GetInputsEditableView(APIView):
+#     """
+#     ## local
+#     # login first http://127.0.0.1:8000/admin
+#     # http://127.0.0.1:8000/core/get_inputs_editable
+    
+#     ## deployed
+#     # login first: https://alkylates-test-api.chemicals-digital.sasol.com/admin
+#     # https://alkylates-test-api.chemicals-digital.sasol.com/core/get_inputs_editable    
+
+#     Provides the information whether data can be edited by the user or whether they are calculated in the tool 
+#     refers to the colors shown in the DATABASE FEED sheet in excel on the right side (green/yellow part)
+    
+#     "{\"('Augusta', 'EGCP')\":{\"% LnP\":false,\"Benzinetta yield (mt\\/mt)\":false,\"C10 recovery\":true,\"C14 recovery\":true,\"C15 recovery\":true,....
+#     """
+#     permission_classes = [IsAuthenticated]
+
+#     def get(self, request, format=None):
+#         """
+#         reading price data
+#         """
+#         print("reading userinput data")
+#         self.data_module = make_calculations()
+#         self.data_module.get_update_input()
+#         res = deepcopy(self.data_module.input.data_in_editable.copy())
+#         res = res.replace(0, False)
+#         res = res.replace(1, True)
+        
+#         if res.shape[0] > 0:
+#             #res.reset_index(inplace=True)
+#             res = res.transpose().to_json()
+#         else:
+#             res = {}
+
+#         return Response(res)
+
+#     def post(self, request, format=None):
+#         print(request.data)
+#         return Response(None)
 
 
 class GetPlannedView(APIView):
@@ -200,11 +243,18 @@ class GetPlannedView(APIView):
             source = "ISOSIV"
         res = res[source]
 
-        if res.shape[0] > 0:
-            #res.reset_index(inplace=True)
-            res = res.transpose().to_json()
-        else:
-            res = {}
+        # if res.shape[0] > 0:
+        #     #res.reset_index(inplace=True)
+        #     res = res.transpose().to_json()
+        # else:
+        #     res = {}
+        res = res.round(2)
+        res.reset_index(inplace=True)
+        res.replace(np.nan,0,inplace=True)
+        res = res.transpose()
+        res.reset_index(inplace=True)
+
+
 
         return Response(res)
 
@@ -273,11 +323,16 @@ class GetResView(APIView):
         self.data_module.update_res()
         res = self.data_module.res[category][currency][site].copy()
 
-        if res.shape[0] > 0:
-            #res.reset_index(inplace=True)
-            res = res.transpose().to_json()
-        else:
-            res = {}
+        # if res.shape[0] > 0:
+        #     #res.reset_index(inplace=True)
+        #     res = res.transpose().to_json()
+        # else:
+        #     res = {}
+
+        res.reset_index(inplace=True)
+        res.replace(np.nan,0,inplace=True)
+        res = res.transpose()
+        res.reset_index(inplace=True)
 
         return Response(res)
 

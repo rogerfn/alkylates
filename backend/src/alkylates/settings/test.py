@@ -18,4 +18,16 @@ DATABASES = {
     }
 }
 
+DATABASES = {
+    'alkylates_api': {
+      "ENGINE":  "django.db.backends.postgresql",
+      "NAME": os.getenv('alk_DB'),
+      "USER": os.getenv("alk_USER"),
+      "PASSWORD": os.getenv("alk_PASS"),
+      "HOST": os.getenv("alk_SERVER"),
+      "PORT": '13163',
+      "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server",
+        },
+    }
+}
 
