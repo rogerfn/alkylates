@@ -6,14 +6,18 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 function Sidebar() {
-  const [click, setClick] = useState(false);
+  const [click, setClick] = useState(true);
 
   const handleClick = () => setClick(!click);
   return (
     <Container>
-      <Button clicked={click} onClick={() => handleClick()}></Button>
+      <Button 
+      clicked={click} onClick={() => handleClick()}
+      ></Button>
       <SidebarContainer>
-        <SlickBar clicked={click}>
+        <SlickBar
+         clicked={click}
+        >
           {SidebarData.map((item, index) => {
             return (
               <Item
@@ -21,15 +25,11 @@ function Sidebar() {
                 exact
                 activeClassName="active"
                 to={item.link}
-                onClick={() => setClick(false)}
+                // onClick={() => setClick(false)}
               >
-                <ImLab
-                  style={{
-                    width: "1.2rem",
-                    height: "auto",
-                  }}
-                />
-                <Text clicked={click}>{item.title}</Text>
+                <Text
+                //  clicked={click}
+                 >{item.title}</Text>
               </Item>
             );
           })}
@@ -109,7 +109,7 @@ const SlickBar = styled.ul`
   top: 5rem;
   left: 0;
 
-  width: ${(props) => (props.clicked ? "12rem" : "3.5rem")};
+  width: 10rem;
   transition: all 0.5s ease;
   border-radius: 0 30px 30px 0;
 `;
@@ -129,9 +129,9 @@ const Item = styled(NavLink)`
 `;
 
 const Text = styled.span`
-  width: ${(props) => (props.clicked ? "100%" : "0")};
+  width: 100%;
   overflow: hidden;
-  margin-left: ${(props) => (props.clicked ? "1.5rem" : "0")};
+  margin-left: 1.5rem;
   transition: all 0.3s ease;
 `;
 

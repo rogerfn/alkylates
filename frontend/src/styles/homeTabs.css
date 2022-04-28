@@ -3,13 +3,10 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 80%;
-    height: 80%;
+    width: 100%;
     background: #f1f1f1;
-    margin: 50px auto 0;
-    word-break: break-all;
-    /* box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ); */
-   
+    margin: 50px ; 
+    margin-left: 160px;
   }
   
   .bloc-tabs {
@@ -65,43 +62,33 @@
   .content {
     background: white;
     padding: 20px;
-    width: 100%;
-    height: 100%;
     display: none;
   }
   .content h2 {
     padding: 0px 0 5px 0px;
   }
-  .content hr {
-    width: 100px;
-    height: 2px;
-    background: #222;
-    margin-bottom: 5px;
-  }
-  .content p {
-    width: 100%;
-    height: 100%;
-  }
+  
   .active-content {
     display: block;
   }
 
   .viewOptions{
       display: flex;
-      gap: 5rem;
+      gap: 1rem;
       align-items: center;
+      
   }
-
-  .option{
+  
+   .option{
     display: block;
-	width: 80%;
 	border-radius: 5px;
-  padding: 5px 5px 5px 5px;
+  padding: 0.2rem 1rem;
+    text-align: center;
+    font-size: 0.9rem;
 	outline: none;
 	border: none;
 	background: #2c384a;
 	color: #fff;
-	text-transform: uppercase;
 	margin: 1rem 0;
 	cursor: pointer;
 	transition: .5s; 

@@ -29,12 +29,8 @@ function HomeTabs() {
         >
           Update | Input
         </button>
-        <button
-          className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
-          onClick={() => toggleTab(3)}
-        >
-          Export
-        </button>
+       
+         
       </div>
 
       <div className="content-tabs">
@@ -42,36 +38,50 @@ function HomeTabs() {
           className={toggleState === 1 ? "content  active-content" : "content"}
         >
           <div className="viewOptions">
-            <button
-              className="option"
+            <div
+              
               onClick={() => setActive("Product Specification")}
             >
+              <p className="option">
+
               Product Specification
-            </button>
-            <button
-              className="option"
+              </p>
+            </div>
+            <div
+              
               onClick={() => setActive("Feedstock Quality")}
             >
+              <p className="option">
+
               Feedstock Quality
-            </button>
-            <button
-              className="option"
+              </p>
+            </div>
+            <div
+              
               onClick={() => setActive("Feedstock Consumption / Yield")}
             >
-              Feedstock Consumption / Yield
-            </button>
-            <button
-              className="option"
+              <p className="option">
+                
+                Feedstock Consumption / Yield
+                </p> 
+            </div>
+            <div
+              
               onClick={() => setActive("Raw Material Price")}
             >
-              Raw Material Price
-            </button>
-            <button
-              className="option"
+             <p className="option">
+               Raw Material Price
+               </p> 
+               
+            </div>
+            <div
+              
               onClick={() => setActive("LAB Sales Forecast & Price")}
             >
-              LAB Sales Forecast & Price
-            </button>
+             <p className="option">
+                LAB Sales Forecast & Price
+               </p>
+            </div>
           </div>
           <div className="optionPage__container">
             {active === "Product Specification" && (
@@ -96,90 +106,49 @@ function HomeTabs() {
           className={toggleState === 2 ? "content  active-content" : "content"}
         >
           <div className="viewOptions">
-            <button
-              className="option"
+            <div
+              
               onClick={() => setActive("Product Specification")}
             >
-              Product Specification
-            </button>
-            <button
-              className="option"
+             <p className="option">
+               Product Specification
+               </p> 
+            </div>
+            <div
+              
               onClick={() => setActive("Feedstock Quality")}
             >
-              Feedstock Quality
-            </button>
-            <button
-              className="option"
-              onClick={() => setActive("Feedstock Consumption / Yield")}
-            >
-              Feedstock Consumption / Yield
-            </button>
-            <button
-              className="option"
-              onClick={() => setActive("Raw Material Price")}
-            >
-              Raw Material Price
-            </button>
-            <button
-              className="option"
-              onClick={() => setActive("LAB Sales Forecast & Price")}
-            >
-              LAB Sales Forecast & Price
-            </button>
-          </div>
-          <div className="optionPage__container">
-            {active === "Product Specification" && (
-              <ProductSpec toggleState={toggleState} />
-            )}
-            {active === "Feedstock Quality" && (
-              <FeedStockQual toggleState={toggleState} />
-            )}
-            {active === "Feedstock Consumption / Yield" && (
-              <FeedStockCons toggleState={toggleState} />
-            )}
-            {active === "Raw Material Price" && (
-              <RawMaterialPrice toggleState={toggleState} />
-            )}
-            {active === "LAB Sales Forecast & Price" && (
-              <LabSalesFP toggleState={toggleState} />
-            )}
-          </div>
-        </div>
+              <p className="option">
 
-        <div
-          className={toggleState === 3 ? "content  active-content" : "content"}
-        >
-          <div className="viewOptions">
-            <button
-              className="option"
-              onClick={() => setActive("Product Specification")}
-            >
-              Product Specification
-            </button>
-            <button
-              className="option"
-              onClick={() => setActive("Feedstock Quality")}
-            >
               Feedstock Quality
-            </button>
-            <button
-              className="option"
+              </p>
+            </div>
+            <div
+              
               onClick={() => setActive("Feedstock Consumption / Yield")}
             >
-              Feedstock Consumption / Yield
-            </button>
-            <button
-              className="option"
+            <p className="option">
+              
+               Feedstock Consumption / Yield
+              </p> 
+            </div>
+            <div
+              
               onClick={() => setActive("Raw Material Price")}
             >
-              Raw Material Price
-            </button>
-            <button
-              className="option"
+             <p className="option">
+               Raw Material Price
+               </p> 
+            </div>
+            <div
+              
               onClick={() => setActive("LAB Sales Forecast & Price")}
             >
-              LAB Sales Forecast & Price
-            </button>
+              
+             <p className="option">
+               LAB Sales Forecast & Price
+               </p> 
+            </div>
           </div>
           <div className="optionPage__container">
             {active === "Product Specification" && (

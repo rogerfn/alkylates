@@ -1,3 +1,36 @@
 .fsc__inputContainer,.fsq__inputContainer,.lsfp__inputContainer, .ps__inputContainer,.rmp__inputContainer{
-    padding-top: 50px;
+margin-left: auto;
+margin-right: auto;
+padding-top: 20px;
+}
+
+table{
+    border-collapse: collapse;
+    box-shadow: 0 5px 10px  #e1e5ee;
+    background-color: white;
+    width: 68rem;
+    text-align: left;
+    overflow: hidden;
+}
+
+thead{
+    align-content: space-around;
+    box-shadow: 0 5px 10px #e1e5ee;
+}
+
+th{
+    color: #2c384a; 
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+}
+
+td{
+    padding: 1rem 2rem;
+}
+
+tr:nth-child(even){
+    background-color: #f4f6fb;
 }
