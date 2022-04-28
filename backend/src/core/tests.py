@@ -17,12 +17,12 @@ class WorkflowTestCase(APITestCase):
         self.client = APIClient()
         self.client.login(username='admin', password='top_secret')
 
-    # def test_get_quality_data(self):
-    #     print('\n... Testing quality data')
-    #     self.client.force_authenticate(user=self.user)
-    #     response = self.client.get(reverse('get_quality'))
-    #     # Check that we get data
-    #     self.assertGreater(len(response.json())>1, 0)     
+    def test_get_quality_data(self):
+        print('\n... Testing quality data')
+        self.client.force_authenticate(user=self.user)
+        response = self.client.get(reverse('get_quality'))
+        # Check that we get data
+        self.assertGreater(len(response.json())>1, 0)     
 
         
     def test_get_price_data(self):
