@@ -1,36 +1,72 @@
 .fsc__inputContainer,.fsq__inputContainer,.lsfp__inputContainer, .ps__inputContainer,.rmp__inputContainer{
 margin-left: auto;
 margin-right: auto;
-padding-top: 20px;
+max-height: 500px;
+overflow-y: scroll;
 }
 
 table{
     border-collapse: collapse;
     box-shadow: 0 5px 10px  #e1e5ee;
     background-color: white;
-    width: 68rem;
     text-align: left;
-    overflow: hidden;
+    width: 100%;
+    
 }
 
 thead{
     align-content: space-around;
     box-shadow: 0 5px 10px #e1e5ee;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+    background-color: white;
 }
 
 th{
     color: #2c384a; 
-    padding: 1rem 0.1rem;
+    padding: 1rem 0;
+    top: 0px;
+    padding-right: 0.6rem;
+    padding-left: 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
-    font-size: 0.7rem;
+    font-size: 0.5rem;
     font-weight: 900;
+}
+
+th:nth-child(1){
+    position: sticky;
+    left: 0;
+    background-color: white;
+}
+th:nth-child(2){
+    position: sticky;
+    left: 3rem;
+    background-color: white;
 }
 
 td{
     padding: 0.1rem 0.2rem;
+    font-size: x-small;
+    height: 30px;
 }
 
+td:nth-child(1){
+    position: sticky;
+    left: 0;
+    background-color: inherit;
+}
+td:nth-child(2){
+    position: sticky;
+    left: 3rem;
+    background-color: inherit;
+}
+
+
+tr:nth-child(odd){
+    background-color: white;
+}
 tr:nth-child(even){
     background-color: #f4f6fb;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import FSCForm from "./FSCForm";
+import FSCTable from "./FSCTable";
 import FSCGraph from "./FSCGraph";
 
 function FeedStockCons({ toggleState }) {
@@ -7,7 +7,7 @@ function FeedStockCons({ toggleState }) {
     case 1:
       return <FSCGraph />;
     case 2:
-      return <FSCForm />;
+      return <FSCTable />;
     case 3:
       return <div>Export Feedstocks Consumption</div>;
     default:

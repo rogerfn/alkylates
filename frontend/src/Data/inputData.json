@@ -1,0 +1,2704 @@
+{
+    "Headings":[
+        "site",
+        "feedstock",
+        "% LnP",
+        "Benzinetta yield (mt/mt)",
+        "C10 recovery",
+        "C14 recovery",
+        "C15 recovery",
+        "C18+ recovery",
+        "Electricity yield",
+        "Feed yield (mt/mt)",
+        "Freight/CIF-FOB premium",
+        "Fuel Sarroch yield",
+        "Gasoil yield (ton/ton)",
+        "H2 rich gas yield",
+        "HnP adsorption recovery",
+        "LnP adsorption recovery",
+        "NG yield",
+        "Premium Return (S/mt)",
+        "Premium kero ($/mt) Long-Term",
+        "Premium kero ($/mt) Med-Term",
+        "Return yield (mt/mt)",
+        "Useful HnP TnP",
+        "Useful LnP TnP",
+        "Useful total TnP",
+        "VN yield (ton/ton)",
+        "density feed (kg/mc)",
+        "density return (kg/mc)",
+        "loses",
+        "loses due to cracking",
+        "nP purity"
+    ],
+    "Data":[
+        {
+            "site":"Augusta",
+        "feedstock":  "EGCP",
+        "% LnP":[
+            0.0,
+            false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "C10 recovery":[
+            0.95,
+            true
+        ],
+        "C14 recovery":[
+            0.95,
+            true
+        ],
+        "C15 recovery":[
+            0.9,
+            true
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            252.798,
+            true
+        ],
+        "Feed yield (mt/mt)":[
+            8.749,
+            true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+      false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.93,
+            true
+        ],
+        "NG yield":[
+            461.829,
+      true
+        ],
+        "Premium Return (S/mt)":[
+            8.0,
+            true
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            22.0,
+            true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            17.0,
+            true
+        ],
+        "Return yield (mt/mt)":[
+            7.691,
+            true
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.114,
+            true
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.034,
+            true
+        ],
+        "density feed (kg/mc)":[
+            0.801,
+            true
+        ],
+        "density return (kg/mc)":[
+            0.808,
+            true
+        ],
+        "loses":[
+            0.025,
+            true
+        ],
+        "loses due to cracking":[
+            0.006,
+            true
+        ],
+        "nP purity":[
+            0.99,
+            true
+        ] 
+        },
+        {
+            "site":"Augusta",
+        "feedstock":  "ENI Livorno",
+        "% LnP":[
+            0.0,
+            false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+            false
+        ],
+        "C10 recovery":[
+            0.95,
+      true
+        ],
+        "C14 recovery":[
+            0.95,
+      true
+        ],
+        "C15 recovery":[
+            0.9,
+      true
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            184.426,
+            true
+        ],
+        "Feed yield (mt/mt)":[
+            5.195,
+            true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+      false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.93,
+            true
+        ],
+        "NG yield":[
+            328.565,
+      true
+        ],
+        "Premium Return (S/mt)":[
+            8.0,
+            true
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            22.0,
+            true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            23.5,
+            true
+        ],
+        "Return yield (mt/mt)":[
+            4.148,
+            true
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.192,
+            true
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.022,
+      true
+        ],
+        "density feed (kg/mc)":[
+            0.79,
+            true
+        ],
+        "density return (kg/mc)":[
+            0.8,
+      true
+        ],
+        "loses":[
+            0.025,
+            true
+        ],
+        "loses due to cracking":[
+            0.006,
+            true
+        ],
+        "nP purity":[
+            0.99,
+            true
+        ] 
+        },
+        {
+            "site":"Augusta",
+        "feedstock":"ENI Taranto",
+        "% LnP":[
+            0.0,
+            false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "C10 recovery":[
+            0.95,
+            true
+        ],
+        "C14 recovery":[
+            0.95,
+            true
+        ],
+        "C15 recovery":[
+            0.9,
+            true
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            172.469,
+            true
+        ],
+        "Feed yield (mt/mt)":[
+            3.964,
+            true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+      false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.93,
+            true
+        ],
+        "NG yield":[
+            298.672,
+            true
+        ],
+        "Premium Return (S/mt)":[
+            8.0,
+            true
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            22.0,
+            true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            23.5,
+            true
+        ],
+        "Return yield (mt/mt)":[
+            2.908,
+            true
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.252,
+            true
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.031,
+            true
+        ],
+        "density feed (kg/mc)":[
+            0.031,
+            true
+        ],
+        "density return (kg/mc)":[
+            0.803,
+            true
+        ],
+        "loses":[
+            0.025,
+            true
+        ],
+        "loses due to cracking":[
+            0.006,
+            true
+        ],
+        "nP purity":[
+            0.99,
+            true
+        ] 
+        },
+        {
+            "site":"Augusta",
+        "feedstock":"Jubail",
+        "% LnP":[
+            0.0,
+            false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "C10 recovery":[
+            0.95,
+            true
+        ],
+        "C14 recovery":[
+            0.95,
+            true
+        ],
+        "C15 recovery":[
+            0.9,
+            true
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            188.017,
+            true
+        ],
+        "Feed yield (mt/mt)":[
+            5.729,
+      true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+      false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.93,
+            true
+        ],
+        "NG yield":[
+            337.541,
+            true
+        ],
+        "Premium Return (S/mt)":[
+            8.0,
+            true
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            24.0,
+      true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            22.0,
+            true
+        ],
+        "Return yield (mt/mt)":[
+            4.654,
+            true
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.175,
+            true
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.051,
+            true
+        ],
+        "density feed (kg/mc)":[
+            0.051,
+      true
+        ],
+        "density return (kg/mc)":[
+            0.797,
+            true
+        ],
+        "loses":[
+            0.025,
+            true
+        ],
+        "loses due to cracking":[
+            0.006,
+            true
+        ],
+        "nP purity":[
+            0.99,
+            true
+        ] 
+        },
+        {
+            "site":"Augusta",
+        "feedstock":  "Ras Laffan",
+        "% LnP":[
+            0.0,
+            false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "C10 recovery":[
+            0.95,
+            true
+        ],
+        "C14 recovery":[
+            0.95,
+            true
+        ],
+        "C15 recovery":[
+            0.9,
+            true
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            196.443,
+            true
+        ],
+        "Feed yield (mt/mt)":[
+            7.552,
+            true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+      false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.93,
+            true
+        ],
+        "NG yield":[
+            358.608,
+            true
+        ],
+        "Premium Return (S/mt)":[
+            8.0,
+            true
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            24.0,
+            true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            26.0,
+            true
+        ],
+        "Return yield (mt/mt)":[
+            6.467,
+      true
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.132,
+            true
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.06,
+      true
+        ],
+        "density feed (kg/mc)":[
+            0.06,
+            true
+        ],
+        "density return (kg/mc)":[
+            0.788,
+            true
+        ],
+        "loses":[
+            0.025,
+            true
+        ],
+        "loses due to cracking":[
+            0.006,
+            true
+        ],
+        "nP purity":[
+            0.99,
+            true
+        ] 
+        },
+        {
+            "site":"Augusta",
+        "feedstock": "Ras Lanuf",
+        "% LnP":[
+            0.0,
+            false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "C10 recovery":[
+            0.95,
+            true
+        ],
+        "C14 recovery":[
+            0.95,
+            true
+        ],
+        "C15 recovery":[
+            0.9,
+            true
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            181.013,
+            true
+        ],
+        "Feed yield (mt/mt)":[
+            4.772,
+            true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+      false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.93,
+            true
+        ],
+        "NG yield":[
+            320.033,
+      true
+        ],
+        "Premium Return (S/mt)":[
+            8.0,
+            true
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            26.0,
+      true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            22.0,
+      true
+        ],
+        "Return yield (mt/mt)":[
+            3.697,
+      true
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.21,
+      true
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.05,
+      true
+        ],
+        "density feed (kg/mc)":[
+            0.783,
+            true
+        ],
+        "density return (kg/mc)":[
+            0.791,
+            true
+        ],
+        "loses":[
+            0.025,
+            true
+        ],
+        "loses due to cracking":[
+            0.006,
+            true
+        ],
+        "nP purity":[
+            0.99,
+            true
+        ] 
+        },
+        {
+            "site":"Augusta",
+        "feedstock":  "Ruwais",
+        "% LnP":[
+            0.0,
+            false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "C10 recovery":[
+            0.95,
+            true
+        ],
+        "C14 recovery":[
+            0.95,
+            true
+        ],
+        "C15 recovery":[
+            0.9,
+            true
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            185.819,
+            true
+        ],
+        "Feed yield (mt/mt)":[
+            5.39,
+      true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+      false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.93,
+            true
+        ],
+        "NG yield":[
+            332.047,
+            true
+        ],
+        "Premium Return (S/mt)":[
+            8.0,
+            true
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            24.0,
+      true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            23.0,
+            true
+        ],
+        "Return yield (mt/mt)":[
+            4.317,
+            true
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.186,
+            true
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.048,
+            true
+        ],
+        "density feed (kg/mc)":[
+            0.786,
+      true
+        ],
+        "density return (kg/mc)":[
+            0.794,
+            true
+        ],
+        "loses":[
+            0.025,
+            true
+        ],
+        "loses due to cracking":[
+            0.006,
+            true
+        ],
+        "nP purity":[
+            0.99,
+            true
+        ] 
+        },
+        {
+            "site":"Augusta",
+        "feedstock": "Skikda",
+        "% LnP":[
+            0.0,
+            false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "C10 recovery":[
+            0.95,
+            true
+        ],
+        "C14 recovery":[
+            0.95,
+            true
+        ],
+        "C15 recovery":[
+            0.9,
+            true
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            188.202,
+      true
+        ],
+        "Feed yield (mt/mt)":[
+            5.76,
+            true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+      false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.93,
+            true
+        ],
+        "NG yield":[
+            338.004,
+            true
+        ],
+        "Premium Return (S/mt)":[
+            8.0,
+            true
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            26.0,
+      true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            26.0,
+      true
+        ],
+        "Return yield (mt/mt)":[
+            4.706,
+            true
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.174,
+      true
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.029,
+            true
+        ],
+        "density feed (kg/mc)":[
+            0.784,
+            true
+        ],
+        "density return (kg/mc)":[
+            0.791,
+      true
+        ],
+        "loses":[
+            0.025,
+            true
+        ],
+        "loses due to cracking":[
+            0.006,
+            true
+        ],
+        "nP purity":[
+            0.99,
+            true
+        ] 
+        },
+        {
+            "site":"Augusta",
+        "feedstock":  "Sonatrach",
+        "% LnP":[
+            0.0,
+            false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "C10 recovery":[
+            0.95,
+            true
+        ],
+        "C14 recovery":[
+            0.95,
+            true
+        ],
+        "C15 recovery":[
+            0.9,
+            true
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            185.0,
+            true
+        ],
+        "Feed yield (mt/mt)":[
+            5.273,
+            true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+      false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.93,
+            true
+        ],
+        "NG yield":[
+            330.0,
+            true
+        ],
+        "Premium Return (S/mt)":[
+            8.0,
+            true
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            17.5,
+      true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            17.5,
+            true
+        ],
+        "Return yield (mt/mt)":[
+            4.208,
+      true
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.19,
+            true
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.04,
+      true
+        ],
+        "density feed (kg/mc)":[
+            0.791,
+            true
+        ],
+        "density return (kg/mc)":[
+            0.801,
+      true
+        ],
+        "loses":[
+            0.025,
+            true
+        ],
+        "loses due to cracking":[
+            0.006,
+            true
+        ],
+        "nP purity":[
+            0.99,
+            true
+        ] 
+        },
+        {
+            "site":"Augusta",
+        "feedstock":"Sonatrach add",
+        "% LnP":[
+            0.0,
+            false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "C10 recovery":[
+            0.95,
+            true
+        ],
+        "C14 recovery":[
+            0.95,
+            true
+        ],
+        "C15 recovery":[
+            0.9,
+            true
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            185.0,
+      true
+        ],
+        "Feed yield (mt/mt)":[
+            5.273,
+      true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+      false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.93,
+            true
+        ],
+        "NG yield":[
+            330.0,
+            true
+        ],
+        "Premium Return (S/mt)":[
+            8.0,
+            true
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            11.0,
+            true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            17.0,
+            true
+        ],
+        "Return yield (mt/mt)":[
+            4.208,
+            true
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.19,
+            true
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.04,
+      true
+        ],
+        "density feed (kg/mc)":[
+            0.791,
+      true
+        ],
+        "density return (kg/mc)":[
+            0.801,
+      true
+        ],
+        "loses":[
+            0.025,
+            true
+        ],
+        "loses due to cracking":[
+            0.006,
+            true
+        ],
+        "nP purity":[
+            0.99,
+            true
+        ] 
+        },
+        {
+            "site":"Augusta",
+        "feedstock":"Sonatrach plus",
+        "% LnP":[
+            0.0,
+            false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "C10 recovery":[
+            0.95,
+            true
+        ],
+        "C14 recovery":[
+            0.95,
+            true
+        ],
+        "C15 recovery":[
+            0.9,
+            true
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            185.0,
+      true
+        ],
+        "Feed yield (mt/mt)":[
+            5.273,
+      true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+      false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.93,
+            true
+        ],
+        "NG yield":[
+            330.0,
+            true
+        ],
+        "Premium Return (S/mt)":[
+            8.0,
+            true
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            11.0,
+      true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            11.0,
+      true
+        ],
+        "Return yield (mt/mt)":[
+            4.208,
+      true
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.19,
+      true
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.04,
+            true
+        ],
+        "density feed (kg/mc)":[
+            0.791,
+            true
+        ],
+        "density return (kg/mc)":[
+            0.801,
+            true
+        ],
+        "loses":[
+            0.025,
+            true
+        ],
+        "loses due to cracking":[
+            0.006,
+            true
+        ],
+        "nP purity":[
+            0.99,
+            true
+        ] 
+        },
+        {
+            "site":"Augusta",
+        "feedstock": "Trafigura",
+        "% LnP":[
+            0.0,
+            false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "C10 recovery":[
+            0.95,
+            true
+        ],
+        "C14 recovery":[
+            0.95,
+            true
+        ],
+        "C15 recovery":[
+            0.9,
+            true
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            186.995,
+      true
+        ],
+        "Feed yield (mt/mt)":[
+            5.566,
+            true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+      false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.93,
+            true
+        ],
+        "NG yield":[
+            334.986,
+            true
+        ],
+        "Premium Return (S/mt)":[
+            8.0,
+            true
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            26.0,
+            true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            22.0,
+      true
+        ],
+        "Return yield (mt/mt)":[
+            4.501,
+            true
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.18,
+      true
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.04,
+      true
+        ],
+        "density feed (kg/mc)":[
+            0.781,
+      true
+        ],
+        "density return (kg/mc)":[
+            0.788,
+            true
+        ],
+        "loses":[
+            0.025,
+            true
+        ],
+        "loses due to cracking":[
+            0.006,
+            true
+        ],
+        "nP purity":[
+            0.99,
+            true
+        ] 
+        },
+        {
+            "site":"Augusta",
+        "feedstock":"Zawia",
+        "% LnP":[
+            0.0,
+            false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "C10 recovery":[
+            0.95,
+            true
+        ],
+        "C14 recovery":[
+            0.95,
+            true
+        ],
+        "C15 recovery":[
+            0.9,
+            true
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            239.432,
+            true
+        ],
+        "Feed yield (mt/mt)":[
+            7.743,
+            true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+      false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.93,
+            true
+        ],
+        "NG yield":[
+            435.839,
+            true
+        ],
+        "Premium Return (S/mt)":[
+            8.0,
+            true
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            26.0,
+      true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            17.0,
+            true
+        ],
+        "Return yield (mt/mt)":[
+            6.703,
+      true
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.129,
+      true
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.015,
+      true
+        ],
+        "density feed (kg/mc)":[
+            0.802,
+            true
+        ],
+        "density return (kg/mc)":[
+            0.81,
+      true
+        ],
+        "loses":[
+            0.025,
+            true
+        ],
+        "loses due to cracking":[
+            0.006,
+            true
+        ],
+        "nP purity":[
+            0.99,
+            true
+        ] 
+        },
+        {
+            "site": "Sarroch",
+        "feedstock":"Chevron GTL",
+        "% LnP":[
+            0.576,
+            true
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.1,
+      true
+        ],
+        "C10 recovery":[
+            0.7,
+            true
+        ],
+        "C14 recovery":[
+            0.0,
+      false
+        ],
+        "C15 recovery":[
+            0.0,
+      false
+        ],
+        "C18+ recovery":[
+            0.5,
+            true
+        ],
+        "Electricity yield":[
+            170.0,
+      true
+        ],
+        "Feed yield (mt/mt)":[
+            5.393,
+      true
+        ],
+        "Freight/CIF-FOB premium":[
+            23.17,
+      true
+        ],
+        "Fuel Sarroch yield":[
+            120.0,
+            true
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.03,
+            true
+        ],
+        "HnP adsorption recovery":[
+            0.95,
+            true
+        ],
+        "LnP adsorption recovery":[
+            0.97,
+      true
+        ],
+        "NG yield":[
+            0.0,
+      false
+        ],
+        "Premium Return (S/mt)":[
+            -4.0,
+            true
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            8.5,
+            true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            8.5,
+      true
+        ],
+        "Return yield (mt/mt)":[
+            4.273,
+      true
+        ],
+        "Useful HnP TnP":[
+            0.137,
+      true
+        ],
+        "Useful LnP TnP":[
+            0.185,
+      true
+        ],
+        "Useful total TnP":[
+            0.322,
+            true
+        ],
+        "VN yield (ton/ton)":[
+            0.0,
+      false
+        ],
+        "density feed (kg/mc)":[
+            0.772,
+            true
+        ],
+        "density return (kg/mc)":[
+            0.777,
+            true
+        ],
+        "loses":[
+            0.02,
+            true
+        ],
+        "loses due to cracking":[
+            0.0,
+      true
+        ],
+        "nP purity":[
+            0.99,
+      true
+        ] 
+        },
+        {
+            "site": "Sarroch",
+        "feedstock": "Gal a Azeri",
+        "% LnP":[
+            0.601,
+      true
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.055,
+      true
+        ],
+        "C10 recovery":[
+            0.7,
+      true
+        ],
+        "C14 recovery":[
+            0.0,
+            false
+        ],
+        "C15 recovery":[
+            0.0,
+      false
+        ],
+        "C18+ recovery":[
+            0.91,
+      true
+        ],
+        "Electricity yield":[
+            268.0,
+      true
+        ],
+        "Feed yield (mt/mt)":[
+            9.623,
+            true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            195.0,
+            true
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            false
+        ],
+        "H2 rich gas yield":[
+            0.1,
+            true
+        ],
+        "HnP adsorption recovery":[
+            0.94,
+      true
+        ],
+        "LnP adsorption recovery":[
+            0.97,
+            true
+        ],
+        "NG yield":[
+            0.0,
+      false
+        ],
+        "Premium Return (S/mt)":[
+            0.0,
+            false
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            0.0,
+      true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            0.0,
+            true
+        ],
+        "Return yield (mt/mt)":[
+            8.548,
+      true
+        ],
+        "Useful HnP TnP":[
+            0.069,
+            true
+        ],
+        "Useful LnP TnP":[
+            0.104,
+            true
+        ],
+        "Useful total TnP":[
+            0.173,
+      true
+        ],
+        "VN yield (ton/ton)":[
+            0.0,
+            false
+        ],
+        "density feed (kg/mc)":[
+            0.817,
+      true
+        ],
+        "density return (kg/mc)":[
+            0.825,
+      true
+        ],
+        "loses":[
+            0.02,
+            true
+        ],
+        "loses due to cracking":[
+            0.0,
+            true
+        ],
+        "nP purity":[
+            0.99,
+            true
+        ] 
+        },
+        {
+            "site": "Sarroch",
+        "feedstock": "Gal a BuAttifel",
+        "% LnP":[
+            0.601,
+            true
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.055,
+            true
+        ],
+        "C10 recovery":[
+            0.7,
+            true
+        ],
+        "C14 recovery":[
+            0.0,
+      false
+        ],
+        "C15 recovery":[
+            0.0,
+      false
+        ],
+        "C18+ recovery":[
+            0.91,
+      true
+        ],
+        "Electricity yield":[
+            170.0,
+      true
+        ],
+        "Feed yield (mt/mt)":[
+            3.849,
+      true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+      false
+        ],
+        "Fuel Sarroch yield":[
+            120.0,
+      true
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            false
+        ],
+        "H2 rich gas yield":[
+            0.05,
+      true
+        ],
+        "HnP adsorption recovery":[
+            0.94,
+      true
+        ],
+        "LnP adsorption recovery":[
+            0.97,
+      true
+        ],
+        "NG yield":[
+            0.0,
+      false
+        ],
+        "Premium Return (S/mt)":[
+            0.0,
+            false
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            0.0,
+      true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            0.0,
+      true
+        ],
+        "Return yield (mt/mt)":[
+            2.774,
+      true
+        ],
+        "Useful HnP TnP":[
+            0.173,
+      true
+        ],
+        "Useful LnP TnP":[
+            0.26,
+      true
+        ],
+        "Useful total TnP":[
+            0.432,
+            true
+        ],
+        "VN yield (ton/ton)":[
+            0.0,
+            false
+        ],
+        "density feed (kg/mc)":[
+            0.784,
+            true
+        ],
+        "density return (kg/mc)":[
+            0.796,
+      true
+        ],
+        "loses":[
+            0.02,
+      true
+        ],
+        "loses due to cracking":[
+            0.0,
+            true
+        ],
+        "nP purity":[
+            0.99,
+      true
+        ] 
+        },
+        {
+            "site":"Sarroch",
+        "feedstock": "Gal a NIL/Amna",
+        "% LnP":[
+            0.601,
+      true
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.07,
+      true
+        ],
+        "C10 recovery":[
+            0.7,
+            true
+        ],
+        "C14 recovery":[
+            0.0,
+            false
+        ],
+        "C15 recovery":[
+            0.0,
+            false
+        ],
+        "C18+ recovery":[
+            0.91,
+            true
+        ],
+        "Electricity yield":[
+            230.0,
+            true
+        ],
+        "Feed yield (mt/mt)":[
+            6.415,
+      true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            167.0,
+      true
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            false
+        ],
+        "H2 rich gas yield":[
+            0.07,
+            true
+        ],
+        "HnP adsorption recovery":[
+            0.94,
+      true
+        ],
+        "LnP adsorption recovery":[
+            0.97,
+            true
+        ],
+        "NG yield":[
+            0.0,
+      false
+        ],
+        "Premium Return (S/mt)":[
+            0.0,
+            false
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            0.0,
+            true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            0.0,
+            true
+        ],
+        "Return yield (mt/mt)":[
+            5.325,
+      true
+        ],
+        "Useful HnP TnP":[
+            0.104,
+      true
+        ],
+        "Useful LnP TnP":[
+            0.156,
+            true
+        ],
+        "Useful total TnP":[
+            0.259,
+            true
+        ],
+        "VN yield (ton/ton)":[
+            0.0,
+            false
+        ],
+        "density feed (kg/mc)":[
+            0.804,
+            true
+        ],
+        "density return (kg/mc)":[
+            0.814,
+      true
+        ],
+        "loses":[
+            0.02,
+            true
+        ],
+        "loses due to cracking":[
+            0.0,
+            true
+        ],
+        "nP purity":[
+            0.99,
+            true
+        ] 
+        },
+        {
+            "site": "Sarroch",
+        "feedstock":"kero BuAttifel",
+        "% LnP":[
+            0.893,
+            true
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.06,
+      true
+        ],
+        "C10 recovery":[
+            0.7,
+      true
+        ],
+        "C14 recovery":[
+            0.0,
+            false
+        ],
+        "C15 recovery":[
+            0.0,
+      false
+        ],
+        "C18+ recovery":[
+            0.91,
+      true
+        ],
+        "Electricity yield":[
+            170.0,
+      true
+        ],
+        "Feed yield (mt/mt)":[
+            2.396,
+            true
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            120.0,
+            true
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+      false
+        ],
+        "H2 rich gas yield":[
+            0.05,
+            true
+        ],
+        "HnP adsorption recovery":[
+            0.94,
+      true
+        ],
+        "LnP adsorption recovery":[
+            0.97,
+            true
+        ],
+        "NG yield":[
+            0.0,
+      false
+        ],
+        "Premium Return (S/mt)":[
+            0.0,
+            false
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            0.0,
+            true
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            0.0,
+            true
+        ],
+        "Return yield (mt/mt)":[
+            1.316,
+            true
+        ],
+        "Useful HnP TnP":[
+            0.05,
+            true
+        ],
+        "Useful LnP TnP":[
+            0.417,
+            true
+        ],
+        "Useful total TnP":[
+            0.468,
+            true
+        ],
+        "VN yield (ton/ton)":[
+            0.0,
+            false
+        ],
+        "density feed (kg/mc)":[
+            0.774,
+            true
+        ],
+        "density return (kg/mc)":[
+            0.791,
+      true
+        ],
+        "loses":[
+            0.02,
+      true
+        ],
+        "loses due to cracking":[
+            0.0,
+      true
+        ],
+        "nP purity":[
+            0.99,
+      true
+        ] 
+        },
+        {
+            "site": "np purch",
+        "feedstock":"Farabi 10-13",
+        "% LnP":[
+            0.0,
+      false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "C10 recovery":[
+            0.0,
+            false
+        ],
+        "C14 recovery":[
+            0.0,
+            false
+        ],
+        "C15 recovery":[
+            0.0,
+      false
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            0.0,
+            false
+        ],
+        "Feed yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+      false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+            false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "NG yield":[
+            0.0,
+            false
+        ],
+        "Premium Return (S/mt)":[
+            0.0,
+      false
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            0.0,
+            false
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            0.0,
+      false
+        ],
+        "Return yield (mt/mt)":[
+            0.0,
+            false
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful total TnP":[
+            0.0,
+      false
+        ],
+        "VN yield (ton/ton)":[
+            0.0,
+      false
+        ],
+        "density feed (kg/mc)":[
+            0.0,
+      false
+        ],
+        "density return (kg/mc)":[
+            0.0,
+            false
+        ],
+        "loses":[
+            0.0,
+      false
+        ],
+        "loses due to cracking":[
+            0.0,
+      false
+        ],
+        "nP purity":[
+            0.0,
+            false
+        ] 
+        },
+        {
+            "site": "np purch",
+        "feedstock": "Russia 10-13",
+        "% LnP":[
+            0.0,
+            false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "C10 recovery":[
+            0.0,
+            false
+        ],
+        "C14 recovery":[
+            0.0,
+      false
+        ],
+        "C15 recovery":[
+            0.0,
+            false
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            0.0,
+            false
+        ],
+        "Feed yield (mt/mt)":[
+            0.0,
+            false
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+      false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "NG yield":[
+            0.0,
+            false
+        ],
+        "Premium Return (S/mt)":[
+            0.0,
+            false
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            0.0,
+      false
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            270.0,
+            true
+        ],
+        "Return yield (mt/mt)":[
+            0.0,
+            false
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.0,
+      false
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.0,
+            false
+        ],
+        "density feed (kg/mc)":[
+            0.0,
+            false
+        ],
+        "density return (kg/mc)":[
+            0.0,
+            false
+        ],
+        "loses":[
+            0.0,
+      false
+        ],
+        "loses due to cracking":[
+            0.0,
+            false
+        ],
+        "nP purity":[
+            0.0,
+            false
+        ] 
+        },
+        {
+            "site":"np purch",
+        "feedstock": "Shell",
+        "% LnP":[
+            0.0,
+      false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "C10 recovery":[
+            0.0,
+      false
+        ],
+        "C14 recovery":[
+            0.0,
+            false
+        ],
+        "C15 recovery":[
+            0.0,
+            false
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            0.0,
+            false
+        ],
+        "Feed yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+            false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0.0,
+      false
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "NG yield":[
+            0.0,
+            false
+        ],
+        "Premium Return (S/mt)":[
+            0.0,
+            false
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            0.0,
+            false
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            252.0,
+      true
+        ],
+        "Return yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.0,
+      false
+        ],
+        "density feed (kg/mc)":[
+            0.0,
+            false
+        ],
+        "density return (kg/mc)":[
+            0.0,
+      false
+        ],
+        "loses":[
+            0.0,
+            false
+        ],
+        "loses due to cracking":[
+            0.0,
+            false
+        ],
+        "nP purity":[
+            0.0,
+            false
+        ] 
+        },
+        {
+            "site":"np purch",
+        "feedstock": "Taiwan 10-13",
+        "% LnP":[
+            0.0,
+            false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "C10 recovery":[
+            0.0,
+            false
+        ],
+        "C14 recovery":[
+            0.0,
+      false
+        ],
+        "C15 recovery":[
+            0.0,
+      false
+        ],
+        "C18+ recovery":[
+            0.0,
+      false
+        ],
+        "Electricity yield":[
+            0.0,
+            false
+        ],
+        "Feed yield (mt/mt)":[
+            0.0,
+            false
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+            false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+      false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0,
+            true
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "LnP adsorption recovery":[
+            0.0,
+            false
+        ],
+        "NG yield":[
+            0.0,
+      false
+        ],
+        "Premium Return (S/mt)":[
+            0.0,
+      false
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            0.0,
+            false
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            300.0,
+      true
+        ],
+        "Return yield (mt/mt)":[
+            0.0,
+      false
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.0,
+      false
+        ],
+        "density feed (kg/mc)":[
+            0.0,
+      false
+        ],
+        "density return (kg/mc)":[
+            0.0,
+      false
+        ],
+        "loses":[
+            0.0,
+      false
+        ],
+        "loses due to cracking":[
+            0.0,
+      false
+        ],
+        "nP purity":[
+            0.0,
+      false
+        ] 
+        },
+        {
+            "site": "np purch",
+        "feedstock":"US paraffins 14-16",
+        "% LnP":[
+            0.0,
+            false
+        ],
+        "Benzinetta yield (mt/mt)":[
+            0.0,
+            false
+        ],
+        "C10 recovery":[
+            0.0,
+            false
+        ],
+        "C14 recovery":[
+            0.0,
+      false
+        ],
+        "C15 recovery":[
+            0.0,
+      false
+        ],
+        "C18+ recovery":[
+            0.0,
+            false
+        ],
+        "Electricity yield":[
+            0.0,
+      false
+        ],
+        "Feed yield (mt/mt)":[
+            0.0,
+            false
+        ],
+        "Freight/CIF-FOB premium":[
+            0.0,
+      false
+        ],
+        "Fuel Sarroch yield":[
+            0.0,
+      false
+        ],
+        "Gasoil yield (ton/ton)":[
+            0.0,
+      false
+        ],
+        "H2 rich gas yield":[
+            0.0,
+            false
+        ],
+        "HnP adsorption recovery":[
+            0.0,
+      false
+        ],
+        "LnP adsorption recovery":[
+            0.0,
+      false
+        ],
+        "NG yield":[
+            0.0,
+      false
+        ],
+        "Premium Return (S/mt)":[
+            0.0,
+      false
+        ],
+        "Premium kero ($/mt) Long-Term":[
+            0.0,
+      false
+        ],
+        "Premium kero ($/mt) Med-Term":[
+            350.0,
+            true
+        ],
+        "Return yield (mt/mt)":[
+            0.0,
+            false
+        ],
+        "Useful HnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful LnP TnP":[
+            0.0,
+            false
+        ],
+        "Useful total TnP":[
+            0.0,
+            false
+        ],
+        "VN yield (ton/ton)":[
+            0.0,
+      false
+        ],
+        "density feed (kg/mc)":[
+            0.0,
+      false
+        ],
+        "density return (kg/mc)":[
+            0.0,
+      false
+        ],
+        "loses":[
+            0.0,
+      false
+        ],
+        "loses due to cracking":[
+            0.0,
+      false
+        ],
+        "nP purity":[
+            0.0,
+      false
+        ] 
+        }
+    ]
+}

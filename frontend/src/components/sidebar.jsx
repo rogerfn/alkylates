@@ -11,9 +11,7 @@ function Sidebar() {
   const handleClick = () => setClick(!click);
   return (
     <Container>
-      <Button 
-      clicked={click} onClick={() => handleClick()}
-      ></Button>
+
       <SidebarContainer>
         <SlickBar
          clicked={click}
@@ -43,9 +41,6 @@ const Container = styled.div`
   position: fixed;
   z-index: 1;
 
-  .active {
-    border-right: 4px solid #fff;
-  }
 `;
 
 const Button = styled.button`
@@ -82,7 +77,7 @@ const Button = styled.button`
 
 const SidebarContainer = styled.div`
   background-color: #2c384a;
-  width: 3.5rem;
+  width: 4rem;
   height: 80vh;
   margin-top: 1rem;
   border-radius: 0 30px 30px 0;
@@ -105,11 +100,11 @@ const SlickBar = styled.ul`
  
     brightness(101%) contrast(94%);
   padding: 2rem 0;
-  position: absolute;
+  // position: absolute;
   top: 5rem;
-  left: 0;
+  // left: 0;
 
-  width: 10rem;
+  // width: 10rem;
   transition: all 0.5s ease;
   border-radius: 0 30px 30px 0;
 `;
@@ -120,7 +115,7 @@ const Item = styled(NavLink)`
   cursor: pointer;
   color: #fff;
   display: flex;
-  padding-left: 1rem;
+  padding-left: 0.1rem;
   text-decoration: none;
 
   &:hover {
@@ -131,7 +126,7 @@ const Item = styled(NavLink)`
 const Text = styled.span`
   width: 100%;
   overflow: hidden;
-  margin-left: 1.5rem;
+  // margin-left: 1rem;
   transition: all 0.3s ease;
 `;
 

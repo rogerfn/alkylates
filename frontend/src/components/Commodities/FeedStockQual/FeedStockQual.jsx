@@ -1,5 +1,5 @@
 import React from "react";
-import FSQForm from "./FSQForm";
+import FSQForm from "./FSQTable";
 import FSQGraph from "./FSQGraph";
 
 function FeedStockQual({ toggleState }) {

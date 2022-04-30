@@ -9,9 +9,8 @@ function Home() {
     <div className="header__">
       <Nav />
       <Sidebar />
-      <div className="home__tabsContainer">
         <HomeTabs />
-      </div>
+      
     </div>
   );
 }
