@@ -22,25 +22,7 @@ except:
 
 
 class read_complete_input_data:
-    def __init__(self):
-        print('test')
-        #self.sql = sql_connector() 
 
-        # # load data base data (mainly LIMS)
-        # self.df_dbfeed = self.get_dbfeed_data()
-        
-        # # load price data (mainly Platts)
-        # self.df_RMprice = self.get_complete_price_data()
-        
-        # # load planning data (coming from excel)
-        # self.df_plan_dict = self.sql.get_input_data()
-
-    
-    # def get_complete_price_data(self):
-    #     df_price = self.sql.get_RMprice_data()
-    #     df_p_iscalc = self.sql.get_price_is_calculated()
-    #     return self.calculate_prices(df_price,df_p_iscalc) 
-        
     def get_RMprice_data(self,data_p=pd.DataFrame()):
         """
         get all price data and convert them to Euro and Dollar
@@ -139,16 +121,7 @@ class read_complete_input_data:
         df_price['Dollar'].loc[col,ind] =   df_price['Euro'].loc[col,ind].values \
                                                             * df_price['Euro'].loc['Ex, rate',ind].values
         return df_price
-
-    # def get_dbfeed_data(self):
-    #     self.data_hom = self.sql.get_homologue_data()
-    #     self.data_in = self.sql.get_dbinput_data()
-    #     self.data_in_editable = self.sql.get_dbinput_iseditable()
-    #     self.calculate_missing_inputs()
         
-    #     df_dbfeed = pd.concat([self.data_hom,self.data_in],axis=1)
-    #     return df_dbfeed
-
 
     def calculate_missing_inputs(self,data_in=pd.DataFrame(),data_hom=pd.DataFrame()):
         """

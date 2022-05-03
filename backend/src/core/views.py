@@ -58,6 +58,17 @@ def read_input():
     data_in.columns = cols
     return data_in
 
+def read_input_editable():
+    uinput = UserInputDb.objects.all()
+    data_in = uinput.distinct().values('site__name','feedstock__name','name','is_editable')
+    data_in = pd.DataFrame(data_in)
+    data_in.columns = ['site', 'feedstock', 'name', 'is_editable']
+    data_in = data_in.pivot(index=['site','feedstock'], columns='name', values='is_editable')
+    cols = [s.replace('\n',' ') for s in data_in.columns]
+    cols = [s if str(s)[-1] !=' ' else str(s) [:-1] for s in cols]
+    data_in.columns = cols
+    return data_in
+
 def read_isosiv():
     iso = Isosiv.objects.all()
     data_iso = iso.distinct().values('feedstock__name','date','value','unit__name')
@@ -183,6 +194,7 @@ class GetPriceView(APIView):
         data_p = read_price()
         res = data_p[currency]
         res = res.round(2)
+        res.replace(np.nan,0,inplace=True)
         outputdict = get_output_dict(res)
 
         return Response(outputdict)
@@ -215,14 +227,21 @@ class GetInputsView(APIView):
         print("reading userinput data")
         data_hom = read_quality()
         data_in = read_input()
+        res2 = read_input_editable()
         calcs = read_complete_input_data()
         res = calcs.calculate_missing_inputs(data_in,data_hom)
-        res.reset_index(inplace=True)
+       
         res.replace(np.nan,0,inplace=True)
-        res = res.transpose()
-        res.reset_index(inplace=True)
+        res2.replace(np.nan,0,inplace=True)
+        for col in res:
+            res[col] = [ [round(a,3),b==1] for (a,b) in zip(res[col].values,res2[col].values) ]
+        outputdict = get_output_dict(res)
+        # res.reset_index(inplace=True)
+        # res.replace(np.nan,0,inplace=True)
+        # res = res.transpose()
+        # res.reset_index(inplace=True)
 
-        return Response(res)
+        return Response(outputdict)
 
     def post(self, request, format=None):
         print(request.data)
@@ -262,13 +281,11 @@ class GetPlannedView(APIView):
         df_plan_dict = get_plan_dict()
 
         res = df_plan_dict[source]
-        res = res.round(2)
-        res.reset_index(inplace=True)
         res.replace(np.nan,0,inplace=True)
-        res = res.transpose()
-        res.reset_index(inplace=True)
+        res = res.round(2)
+        outputdict = get_output_dict(res)
 
-        return Response(res)
+        return Response(outputdict)
 
     def post(self, request, format=None):
         print(request.data)
@@ -330,14 +347,17 @@ class GetResView(APIView):
         calc = make_calculations(data_hom, data_in, data_p, df_plan_dict)
 
         calc.update_res()
-
         res = calc.res[category][currency][site].copy()
-        res.reset_index(inplace=True)
         res.replace(np.nan,0,inplace=True)
-        res = res.transpose()
-        res.reset_index(inplace=True)
+        outputdict = get_output_dict(res)
+
+
+        # res.reset_index(inplace=True)
+        # res.replace(np.nan,0,inplace=True)
+        # res = res.transpose()
+        # res.reset_index(inplace=True)
         
-        return Response(res)
+        return Response(outputdict)
 
     def post(self, request, format=None):
         print(request.data)

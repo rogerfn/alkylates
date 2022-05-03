@@ -40,7 +40,7 @@ class make_calculations:
                                 'Adder',
                                 'LnP Production']
 
-        print('Reading input data')
+        #print('Reading input data')
 
         # load data base data (mainly LIMS)
         self.df_dbfeed = pd.concat([deepcopy(data_hom),deepcopy(data_in)],axis=1)
