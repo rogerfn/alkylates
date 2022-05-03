@@ -5,22 +5,22 @@ export const SidebarData = [
     cName: "sidebar__navText",
   },
   {
-    title: "Normal Paraffin",
+    title: "Other",
     link: "/home",
     cName: "sidebar__navText",
   },
   {
-    title: "Normal Paraffin",
+    title: "Other",
     link: "/home",
     cName: "sidebar__navText",
   },
   {
-    title: "Normal Paraffin",
+    title: "Other",
     link: "/home",
     cName: "sidebar__navText",
   },
   {
-    title: "Normal Paraffin",
+    title: "Other",
     link: "/home",
     cName: "sidebar__navText",
   },
