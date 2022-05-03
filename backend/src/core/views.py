@@ -106,6 +106,18 @@ def get_plan_dict():
     return df_plan_dict
 
 
+def get_output_dict(df):
+    df.columns = [str(r) for r in df.columns.values]
+    df.reset_index(inplace=True)
+    outputdict = {}
+    outputdict['headings'] = list(df.columns.values)
+
+    df = df.transpose()
+    df = df.to_dict()
+    outputdict['data'] = [df[k] for k in df]
+    return outputdict
+
+
 class GetQualityView(APIView):
     """
     ## local
@@ -129,21 +141,9 @@ class GetQualityView(APIView):
         data_hom = read_quality()
         data_hom = data_hom.reindex(sorted(data_hom.columns), axis=1)
         data_hom = data_hom.round(2)
-        data_hom.reset_index(inplace=True)
-        #data_hom.index = [str(d) for d in data_hom.index.values]
-        #data_hom.reset_index(inplace=True)
-
-        outputdict = {}
-        outputdict['headings'] = list(data_hom.columns.values)
-
-        #data_hom.reset_index(inplace=True)
-        data_hom = data_hom.transpose()
-        data_hom = data_hom.to_dict()
-        
-        outputdict['data'] = [data_hom[k] for k in data_hom]
-
-
+        outputdict = get_output_dict(data_hom)
         return Response(outputdict)
+
 
     def post(self, request, format=None):
         print(request.data)
@@ -183,12 +183,9 @@ class GetPriceView(APIView):
         data_p = read_price()
         res = data_p[currency]
         res = res.round(2)
-        res.reset_index(inplace=True)
-        res.replace(np.nan,0,inplace=True)
-        res = res.transpose()
-        res.reset_index(inplace=True)
+        outputdict = get_output_dict(res)
 
-        return Response(res)
+        return Response(outputdict)
 
     def post(self, request, format=None):
         print(request.data)
