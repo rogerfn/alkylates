@@ -6,37 +6,79 @@ Created on Sun Apr 10 15:49:38 2022
 """
 import pandas as pd
 import numpy as np
-import datetime
+#import datetime
+from copy import deepcopy
 
 try:
-    from .sql_connector import sql_connector
+    # from .sql_connector import sql_connector
+    from .helpers import str2nan
 except:
     try:
-        from sql_connector import sql_connector
+        # from sql_connector import sql_connector
+        from .helpers import str2nan
     except:
-        from utils.sql_connector import sql_connector
+        # from utils.sql_connector import sql_connector
+        from utils.helpers import str2nan
 
 
 class read_complete_input_data:
     def __init__(self):
-        self.sql = sql_connector() 
+        print('test')
+        #self.sql = sql_connector() 
 
-        # load data base data (mainly LIMS)
-        self.df_dbfeed = self.get_dbfeed_data()
+        # # load data base data (mainly LIMS)
+        # self.df_dbfeed = self.get_dbfeed_data()
         
-        # load price data (mainly Platts)
-        self.df_RMprice = self.get_complete_price_data()
+        # # load price data (mainly Platts)
+        # self.df_RMprice = self.get_complete_price_data()
         
-        # load planning data (coming from excel)
-        self.df_plan_dict = self.sql.get_input_data()
+        # # load planning data (coming from excel)
+        # self.df_plan_dict = self.sql.get_input_data()
 
     
-    def get_complete_price_data(self):
-        df_price = self.sql.get_RMprice_data()
-        df_p_iscalc = self.sql.get_price_is_calculated()
-        return self.calculate_prices(df_price,df_p_iscalc) 
+    # def get_complete_price_data(self):
+    #     df_price = self.sql.get_RMprice_data()
+    #     df_p_iscalc = self.sql.get_price_is_calculated()
+    #     return self.calculate_prices(df_price,df_p_iscalc) 
         
+    def get_RMprice_data(self,data_p=pd.DataFrame()):
+        """
+        get all price data and convert them to Euro and Dollar
+    
+        Returns
+        -------
+        dfdict : dictionary of data frames
+        """
         
+        # read price data from database
+        if data_p.shape[0]==0:
+            data_p = self.get_price_data()
+        dfdict = {'Dollar':data_p.copy(),'Euro':data_p.copy()}
+        units = [v[1] for v in data_p.index.values]
+        
+        # convert Euros in Dollars and vice versa
+        for i,val in enumerate(units):
+            if ('$' in str(val)) and ('€' not in str(val)):
+                data_p.iloc[i,:] = data_p.iloc[i,:].apply(str2nan)
+                dfdict['Euro'].iloc[i,:] = data_p.iloc[i,:]/data_p.loc['Ex, rate'].iloc[:]
+            elif ('€' in str(val)) and ('$' not in str(val)):
+                data_p.iloc[i,:] = data_p.iloc[i,:].apply(str2nan)
+                dfdict['Dollar'].iloc[i,:] = data_p.iloc[i,:].values*data_p.loc['Ex, rate'].values
+    
+        # change the Euros to Dollars in the units
+        newindex = [[v.replace('€','$') for v in val] for val in dfdict['Dollar'].index.values]
+        dfdict['Dollar'].index = pd.MultiIndex.from_arrays(
+                          np.array(newindex).transpose().reshape(3,-1),
+                          names=['commodity','unit','source'])
+    
+        # change the Dollars to Euros in the units
+        newindex = [[v.replace('$','€') for v in val] for val in dfdict['Euro'].index.values]
+        dfdict['Euro'].index = pd.MultiIndex.from_arrays(
+                          np.array(newindex).transpose().reshape(3,-1),
+                          names=['commodity','unit','source'])
+        
+        return dfdict          
+
     def calculate_prices(self,df_price,df_p_iscalc):
         col = 'Electricity Augusta'
         ind = (df_p_iscalc.loc[col,:]==1).values[0]
@@ -98,17 +140,17 @@ class read_complete_input_data:
                                                             * df_price['Euro'].loc['Ex, rate',ind].values
         return df_price
 
-    def get_dbfeed_data(self):
-        self.data_hom = self.sql.get_homologue_data()
-        self.data_in = self.sql.get_dbinput_data()
-        self.data_in_editable = self.sql.get_dbinput_iseditable()
-        self.calculate_missing_inputs()
+    # def get_dbfeed_data(self):
+    #     self.data_hom = self.sql.get_homologue_data()
+    #     self.data_in = self.sql.get_dbinput_data()
+    #     self.data_in_editable = self.sql.get_dbinput_iseditable()
+    #     self.calculate_missing_inputs()
         
-        df_dbfeed = pd.concat([self.data_hom,self.data_in],axis=1)
-        return df_dbfeed
+    #     df_dbfeed = pd.concat([self.data_hom,self.data_in],axis=1)
+    #     return df_dbfeed
 
 
-    def calculate_missing_inputs(self):
+    def calculate_missing_inputs(self,data_in=pd.DataFrame(),data_hom=pd.DataFrame()):
         """
         calculate all intermediate values needed
         
@@ -117,6 +159,11 @@ class read_complete_input_data:
         data_in : dictionary of data frames
     
         """
+        if data_in.shape[0]!=0:
+            self.data_in = data_in
+        if data_hom.shape[0]!=0:
+            self.data_hom = data_hom
+
         # calculate 'Premium kero ($/mt) Med-Term'
         calculate = self.data_in.index.values[ 
               np.isnan(self.data_in['Premium kero ($/mt) Med-Term'].values)]
@@ -155,6 +202,8 @@ class read_complete_input_data:
         
         # calculate 'Energy yield'
         self.add_energy_yield()
+
+        return self.data_in
 
     
     def add_useful_LnP_TnP(self):

@@ -223,46 +223,6 @@ class sql_connector:
         return data_pc
     
     
-    
-    def get_RMprice_data(self):
-        """
-        get all price data and convert them to Euro and Dollar
-    
-        Returns
-        -------
-        dfdict : dictionary of data frames
-        """
-        
-        # read price data from database
-        data_p = self.get_price_data()
-        dfdict = {'Dollar':data_p.copy(),'Euro':data_p.copy()}
-        units = [v[1] for v in data_p.index.values]
-        
-        # convert Euros in Dollars and vice versa
-        for i,val in enumerate(units):
-            if ('$' in str(val)) and ('€' not in str(val)):
-                data_p.iloc[i,:] = data_p.iloc[i,:].apply(str2nan)
-                dfdict['Euro'].iloc[i,:] = data_p.iloc[i,:]/data_p.loc['Ex, rate'].iloc[:]
-            elif ('€' in str(val)) and ('$' not in str(val)):
-                data_p.iloc[i,:] = data_p.iloc[i,:].apply(str2nan)
-                dfdict['Dollar'].iloc[i,:] = data_p.iloc[i,:].values*data_p.loc['Ex, rate'].values
-    
-        # change the Euros to Dollars in the units
-        newindex = [[v.replace('€','$') for v in val] for val in dfdict['Dollar'].index.values]
-        dfdict['Dollar'].index = pd.MultiIndex.from_arrays(
-                          np.array(newindex).transpose().reshape(3,-1),
-                          names=['commodity','unit','source'])
-    
-        # change the Dollars to Euros in the units
-        newindex = [[v.replace('$','€') for v in val] for val in dfdict['Euro'].index.values]
-        dfdict['Euro'].index = pd.MultiIndex.from_arrays(
-                          np.array(newindex).transpose().reshape(3,-1),
-                          names=['commodity','unit','source'])
-        
-        return dfdict
-    
-    
-    
     def get_input_data(self):
         """
         read all input data from the database

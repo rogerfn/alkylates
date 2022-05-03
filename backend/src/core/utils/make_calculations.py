@@ -8,25 +8,26 @@ Created on Sun Apr 10 15:50:10 2022
 import pandas as pd
 import numpy as np
 import datetime
+from copy import deepcopy
 
 try:
-    from .sql_connector import sql_connector
+    #from .sql_connector import sql_connector
     from .read_complete_input_files import read_complete_input_data
 except:
     try:
-        from .sql_connector import sql_connector
+        #from .sql_connector import sql_connector
         from .read_complete_input_files  import read_complete_input_data
     except:
-        from .sql_connector import sql_connector
+        #from .sql_connector import sql_connector
         from .read_complete_input_files import read_complete_input_data
 
 
 
 class make_calculations:
-    def __init__(self,show_res=False):
-        # self.get_update_input()
+    def __init__(self,data_hom, data_in, data_p,
+                 df_plan_dict, show_res=False):
+
         self.show_res = show_res
-        self.sql = sql_connector() 
         
         # these are the interemediate and final calculation steps which are available
         self. res_categories = ['Return Stream Price',
@@ -39,18 +40,21 @@ class make_calculations:
                                 'Adder',
                                 'LnP Production']
 
-    
-    def get_update_input(self):
         print('Reading input data')
-        self.input = read_complete_input_data()
+
+        # load data base data (mainly LIMS)
+        self.df_dbfeed = pd.concat([deepcopy(data_hom),deepcopy(data_in)],axis=1)
+        self.df_RMprice = deepcopy(data_p)
+        self.df_plan_dict = deepcopy(df_plan_dict)
+        
         # set the levels and keys of the dictionary that stores the results
-        self.dates = self.input.df_RMprice['Dollar'].columns.values
-        self.currencies = [key for key in self.input.df_RMprice]
-        self.sites = self.input.df_dbfeed.index.unique(level='site').values
+        self.dates = self.df_RMprice['Dollar'].columns.values
+        self.currencies = [key for key in self.df_RMprice]
+        self.sites = self.df_dbfeed.index.unique(level='site').values
         self.sites_feedstocks={}
         for site in self.sites:
             self.sites_feedstocks[site] = \
-                self.input.df_dbfeed.loc[site].index.unique(level='feedstock').values
+                self.df_dbfeed.loc[site].index.unique(level='feedstock').values
     
     
     def update_res(self):
@@ -73,16 +77,6 @@ class make_calculations:
             self.show_values_2_compare_with_excel()    
             
             
-    def save_scenario_input_data(self,scenario):
-        # write all data to the database 
-        self.sql.upload_used_values(table='tmp',scenario=scenario,tabletype='dbfeed',
-                                data=self.input.df_dbfeed)
-        self.sql.upload_used_values(table='tmp',scenario=scenario,tabletype='dbprice',
-                                data=self.input.df_RMprice)
-        self.sql.upload_used_values(table='tmp',scenario=scenario,tabletype='dbplan',
-                                data=self.input.df_plan_dict)
-        
-        
     def setup_res_dict(self):
         df_result_dict = {}
         for rc in self.res_categories:
@@ -107,8 +101,8 @@ class make_calculations:
     def add_feedstock(self):
         site='Augusta'
         inputs='ISOSIV'
-        multiplier = self.input.df_dbfeed.loc[site]['Useful LnP TnP']
-        tmp  = self.input.df_plan_dict[inputs].copy()
+        multiplier = self.df_dbfeed.loc[site]['Useful LnP TnP']
+        tmp  = self.df_plan_dict[inputs].copy()
         aug = pd.DataFrame(tmp.values*multiplier.values.reshape(-1,1),
                            columns = tmp.columns,
                            index = tmp.index)
@@ -119,8 +113,8 @@ class make_calculations:
         
         site='Sarroch'
         inputs='MOLEX'
-        multiplier = self.input.df_dbfeed.loc[site]['Useful LnP TnP']
-        tmp  = self.input.df_plan_dict[inputs].copy()
+        multiplier = self.df_dbfeed.loc[site]['Useful LnP TnP']
+        tmp  = self.df_plan_dict[inputs].copy()
         sar = pd.DataFrame(tmp.values*multiplier.values.reshape(-1,1),
                            columns = tmp.columns,
                            index = tmp.index)
@@ -196,7 +190,7 @@ class make_calculations:
         val : float
         """    
         
-        val = self.input.df_dbfeed.loc[site].loc[feedstock].loc[col]
+        val = self.df_dbfeed.loc[site].loc[feedstock].loc[col]
         error = False
         while (type(val)==np.ndarray) and error==False:
             if len(val)>1:
@@ -229,8 +223,8 @@ class make_calculations:
         """
         
         whichone = whichone.lower().replace(' ','_')
-        date = self.input.df_RMprice[currency].loc['Jet High FOB Med'].columns.values
-        price = self.input.df_RMprice[currency].loc['Jet High FOB Med'].values[0]
+        date = self.df_RMprice[currency].loc['Jet High FOB Med'].columns.values
+        price = self.df_RMprice[currency].loc['Jet High FOB Med'].values[0]
         qual = self.get_from_dbfeed(site='Augusta', 
                                     feedstock='Sonatrach',
                                     col='density feed (kg/mc)')
@@ -268,7 +262,7 @@ class make_calculations:
     
         """
         sona_plus_dict={}
-        sona_plus_dict['date'] = self.input.df_RMprice['Dollar'].columns.values
+        sona_plus_dict['date'] = self.df_RMprice['Dollar'].columns.values
         
         sona_plus_dict['Sonatrach Base'] = self.calc_Sonatrach(currency='Dollar', 
                                                                whichone='base')
@@ -308,7 +302,7 @@ class make_calculations:
     def get_from_price_table(self,curr='Euro', ind='VN AU', 
                              date=pd.Timestamp('2019-09-01 00:00:00')):
         try:
-            return self.input.df_RMprice[curr].loc[ind,:][date].values[0]
+            return self.df_RMprice[curr].loc[ind,:][date].values[0]
         except:
             print(f'ERROR: self.get_from_price_table for {curr, ind, date}')
             return 0
@@ -316,7 +310,7 @@ class make_calculations:
     
     def get_from_db(self,col="Premium Return (S/mt)",site='Augusta', fs='Trafigura'):
         try:
-            return self.input.df_dbfeed.loc[site].loc[fs].loc[col]
+            return self.df_dbfeed.loc[site].loc[fs].loc[col]
         except:
             print(f'ERROR: get_from_db for {site, fs, col}')
             return 0
@@ -325,7 +319,7 @@ class make_calculations:
     def get_from_input_table(self,category='Kero_premium',
                              fs='',date=datetime.datetime.now()):
         try:
-            return self.input.df_plan_dict[category].loc[fs][date].values[0]                          
+            return self.df_plan_dict[category].loc[fs][date].values[0]                          
         except:
             #print(f'ERROR: get_from_input_table for {category, fs, date}')
             return 0 

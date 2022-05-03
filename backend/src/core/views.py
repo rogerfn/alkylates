@@ -1,15 +1,110 @@
 from re import S
 import requests
-from copy import deepcopy
 import numpy as np
 import pandas as pd
+import datetime
+import os
+from copy import deepcopy
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 from core.utils.make_calculations import make_calculations
+from core.utils.make_calculations import read_complete_input_data
+from .models import Homologues, KeroPremium, Price, UserInputDb, Isosiv, Molex
 
-from .models import Homologues, Feedstock, Site
+def read_quality():
+    quality = Homologues.objects.all()
+    data_hom = quality.distinct().values('site__name','feedstock__name','name','value')
+    data_hom = pd.DataFrame(data_hom)
+    data_hom.columns = ['site','feedstock','homologue','value']
+    data_hom = data_hom.pivot(index=['site','feedstock'], columns='homologue', values='value')
+    data_hom['TNP'] = data_hom.sum(axis=1)
+    return data_hom
+
+def read_price():
+    # get the price per material/commodity
+    price = Price.objects.all()
+    data_p = price.distinct().values('commodity__name','date','value','unit__name','source__name')
+    data_p = pd.DataFrame(data_p)
+    data_p.columns = ['commodity','date', 'value','unit','source']
+    if type(data_p['date'].values[0]) == str:
+        data_p['date']=[datetime.datetime.strptime(d,'%d-%m-%Y') for d in data_p['date']]
+    data_p = data_p.pivot(index=['commodity','unit','source'], columns='date', values='value')
+    
+    # get the indicator that shows if the value in this cell shall be calculated
+    data_p_iscalc = price.distinct().values('commodity__name','date','is_calculated','unit__name','source__name')
+    data_p_iscalc = pd.DataFrame(data_p_iscalc)
+    data_p_iscalc.columns = ['commodity','date', 'is_calculated','unit','source']
+    if type(data_p_iscalc['date'].values[0]) == str:
+        data_p_iscalc['date']=[datetime.datetime.strptime(d,'%d-%m-%Y') for d in data_p_iscalc['date']]
+    data_p_iscalc = data_p_iscalc.pivot(index=['commodity','unit','source'], columns='date', values='is_calculated')
+    
+    # fill and calculate the missing values
+    calcs = read_complete_input_data()
+    data_p = calcs.get_RMprice_data(data_p)
+    data_p = calcs.calculate_prices(data_p,data_p_iscalc) 
+    return data_p
+
+def read_input():
+    uinput = UserInputDb.objects.all()
+    data_in = uinput.distinct().values('site__name','feedstock__name','name','value')
+    data_in = pd.DataFrame(data_in)
+    data_in.columns = ['site', 'feedstock', 'name', 'value']
+    data_in = data_in.pivot(index=['site','feedstock'], columns='name', values='value')
+    cols = [s.replace('\n',' ') for s in data_in.columns]
+    cols = [s if str(s)[-1] !=' ' else str(s) [:-1] for s in cols]
+    data_in.columns = cols
+    return data_in
+
+def read_isosiv():
+    iso = Isosiv.objects.all()
+    data_iso = iso.distinct().values('feedstock__name','date','value','unit__name')
+    data_iso = pd.DataFrame(data_iso)
+    data_iso.columns = ['feedstock', 'date', 'value','unit']
+    if type(data_iso['date'].values[0]) == str:
+        data_iso['date']=[datetime.datetime.strptime(d,'%d-%m-%Y') for d in data_iso['date']]
+    data_iso = data_iso.pivot(index=['feedstock','unit'], columns='date', values='value')
+    
+    return data_iso
+
+def read_molex():
+    mole = Molex.objects.all()
+    data_mole = mole.distinct().values('feedstock__name','date','value','unit__name')
+    data_mole = pd.DataFrame(data_mole)
+    data_mole.columns = ['feedstock', 'date', 'value','unit']
+    if type(data_mole['date'].values[0]) == str:
+        data_mole['date']=[datetime.datetime.strptime(d,'%d-%m-%Y') for d in data_mole['date']]
+    data_mole = data_mole.pivot(index=['feedstock','unit'], columns='date', values='value')
+    
+    return data_mole
+
+def read_kero():
+    kero = KeroPremium.objects.all()
+    data_kero = kero.distinct().values('feedstock__name','date','value','unit__name')
+    data_kero = pd.DataFrame(data_kero)
+    data_kero.columns = ['feedstock', 'date', 'value','unit']
+    if type(data_kero['date'].values[0]) == str:
+        data_kero['date']=[datetime.datetime.strptime(d,'%d-%m-%Y') for d in data_kero['date']]
+    data_kero = data_kero.pivot(index=['feedstock','unit'], columns='date', values='value')
+    
+    return data_kero
+
+def get_plan_dict():
+    df_ISOSIV = read_isosiv()
+    df_MOLEX = read_molex()
+    df_Kero_Prem = read_kero()
+    df_plan_dict = {
+                        'ISOSIV': df_ISOSIV,
+                        'MOLEX':df_MOLEX,
+                        'Kero_premium':df_Kero_Prem,
+                        }
+    for key in df_plan_dict:
+        df_plan_dict[key] = df_plan_dict[key].rename( index={'Sonatrach plus*': 'Sonatrach add'})
+        df_plan_dict[key] = df_plan_dict[key].rename( index={'EGPC': 'EGCP'})
+    return df_plan_dict
+
 
 class GetQualityView(APIView):
     """
@@ -22,9 +117,7 @@ class GetQualityView(APIView):
     # https://alkylates-test-api.chemicals-digital.sasol.com/core/get_quality
 
     Provides the quality data shown in the DATABASE FEED sheet in excel on the left side (white part)
-
-    {\"('Augusta', 'EGCP')\":{\"C10\":3.98,\"C11\":2.93, ..... \"TNP\":15.87},
-     \"('Augusta', 'ENI Livorno')\":{\"C10\":4.6713325301,\"C11\" .....
+    first the names of all columns then each row is provided
 
     """
     permission_classes = [IsAuthenticated]
@@ -33,19 +126,24 @@ class GetQualityView(APIView):
         """
         reading quality data values
         """
-        quality = Homologues.objects.all()
-        data_hom = quality.distinct().values('site__name','feedstock__name','name','value')
-        data_hom = pd.DataFrame(data_hom)
-        data_hom.columns = ['site','feedstock','homologue','value']
-        data_hom = data_hom.pivot(index=['site','feedstock'], columns='homologue', values='value')
-        data_hom['TNP'] = data_hom.sum(axis=1)
+        data_hom = read_quality()
         data_hom = data_hom.reindex(sorted(data_hom.columns), axis=1)
-        
+        data_hom = data_hom.round(2)
         data_hom.reset_index(inplace=True)
-        data_hom = data_hom.transpose()
-        data_hom.reset_index(inplace=True)
+        #data_hom.index = [str(d) for d in data_hom.index.values]
+        #data_hom.reset_index(inplace=True)
 
-        return Response(data_hom)
+        outputdict = {}
+        outputdict['headings'] = list(data_hom.columns.values)
+
+        #data_hom.reset_index(inplace=True)
+        data_hom = data_hom.transpose()
+        data_hom = data_hom.to_dict()
+        
+        outputdict['data'] = [data_hom[k] for k in data_hom]
+
+
+        return Response(outputdict)
 
     def post(self, request, format=None):
         print(request.data)
@@ -68,8 +166,7 @@ class GetPriceView(APIView):
     if no currency is added the default is Euro
     
     Provides the price data shown in the RM PRICE sheet in excel on the left side (white part)
-    
-    "{\"('Benzene EU', '\\u20ac\\/mt', 'Formula')\":{\"1567296000000\":763.9878941743,\"1569888000000\":695.0102697606,......   
+    first the names of all columns then each row is provided
     
     """
     permission_classes = [IsAuthenticated]
@@ -79,22 +176,17 @@ class GetPriceView(APIView):
         reading price data
         """
         print("GetPriceView in views: Reading price data")
-        #currency = request.values.get('currency', 'Euro')
         currency = self.request.query_params.getlist('currency', 'Euro')
         if currency not in ['Dollar','Euro']:
             return Response('No valid currency, choose Euro or Dollar')
 
-        self.data_module = make_calculations()
-        self.data_module.get_update_input()
-        res = deepcopy(self.data_module.input.df_RMprice)
-        res = res[currency]
+        data_p = read_price()
+        res = data_p[currency]
         res = res.round(2)
-        #res = res.transpose().to_json()
         res.reset_index(inplace=True)
         res.replace(np.nan,0,inplace=True)
         res = res.transpose()
         res.reset_index(inplace=True)
-
 
         return Response(res)
 
@@ -114,8 +206,7 @@ class GetInputsView(APIView):
     # https://alkylates-test-api.chemicals-digital.sasol.com/core/get_inputs
 
     Provides the user input data shown in the DATABASE FEED sheet in excel on the right side (green/yellow part)
-    
-    "{\"('Augusta', 'EGCP')\":{\"% LnP\":null,\"Benzinetta yield (mt\\/mt)\":null,\"C10 recovery\":0.95,\"C14 recovery\":0.95,\"C15 recovery\":0.9, .....
+    first the names of all columns then each row is provided
     """
 
     permission_classes = [IsAuthenticated]
@@ -125,16 +216,12 @@ class GetInputsView(APIView):
         reading price data
         """
         print("reading userinput data")
-        self.data_module = make_calculations()
-        self.data_module.get_update_input()
-
-        res = deepcopy(self.data_module.input.data_in.copy())
-        res.replace(np.nan,0,inplace=True)
-        res2 = deepcopy(self.data_module.input.data_in_editable.copy())
-        for col in res:
-            res[col] = [ [round(a,3),b] for (a,b) in zip(res[col].values,res2[col].values) ]
-
+        data_hom = read_quality()
+        data_in = read_input()
+        calcs = read_complete_input_data()
+        res = calcs.calculate_missing_inputs(data_in,data_hom)
         res.reset_index(inplace=True)
+        res.replace(np.nan,0,inplace=True)
         res = res.transpose()
         res.reset_index(inplace=True)
 
@@ -162,8 +249,7 @@ class GetPlannedView(APIView):
 
     Provides the planning information shown in the excel INPUT sheet
     if you do not provide additional information the ISOSIV data are shown
-    
-    "{\"('EGCP', 'mt')\":{\"1567296000000\":null,\"1569888000000\":null,\"1572566400000\":null,\"1575158400000\":null,\"1577836800000\":null,\"1580515200000\":null,\"1583020800000\":null,\"1585699200000\":null,\"1590969600000....
+    first the names of all columns then each row is provided
     """
     permission_classes = [IsAuthenticated]
 
@@ -172,28 +258,18 @@ class GetPlannedView(APIView):
         reading price data
         """
         print("reading userinput data")
-        self.data_module = make_calculations()
         source = self.request.query_params.getlist('source', 'ISOSIV')
-
-        self.data_module.get_update_input()
-        res = deepcopy(self.data_module.input.df_plan_dict.copy())
-
         if source not in ['ISOSIV','MOLEX','Kero_premium']:
             source = "ISOSIV"
-        res = res[source]
+        
+        df_plan_dict = get_plan_dict()
 
-        # if res.shape[0] > 0:
-        #     #res.reset_index(inplace=True)
-        #     res = res.transpose().to_json()
-        # else:
-        #     res = {}
+        res = df_plan_dict[source]
         res = res.round(2)
         res.reset_index(inplace=True)
         res.replace(np.nan,0,inplace=True)
         res = res.transpose()
         res.reset_index(inplace=True)
-
-
 
         return Response(res)
 
@@ -216,8 +292,7 @@ class GetResView(APIView):
 
     get the results which were caluclated in the tool
     if you do not specify anything you get Variable Costs for Augusta in Euro
-
-    "{\"EGCP\":{\"1567296000000\":709.7678601808,\"1569888000000\":686.9637062186,\"1572566400000\":690.5865758325,\"1575158400000\":687.9434998742,
+    first the names of all columns then each row is provided
 
     # levels:
     # category:
@@ -247,32 +322,24 @@ class GetResView(APIView):
         """
         reading price data
         """
-
-        print("first calculating then reading results ")
         site = self.request.query_params.getlist('site', ['Augusta'])[0]
         currency = self.request.query_params.getlist('currency', ['Euro'])[0]
         category = self.request.query_params.getlist('category', ['Variable Costs'])[0]
 
-        # print(site)
-        # print(currency)
-        # print(category)
+        data_hom = read_quality()
+        data_in = read_input()
+        data_p = read_price()
+        df_plan_dict = get_plan_dict()
+        calc = make_calculations(data_hom, data_in, data_p, df_plan_dict)
 
-        self.data_module = make_calculations()
-        self.data_module.get_update_input()
-        self.data_module.update_res()
-        res = self.data_module.res[category][currency][site].copy()
+        calc.update_res()
 
-        # if res.shape[0] > 0:
-        #     #res.reset_index(inplace=True)
-        #     res = res.transpose().to_json()
-        # else:
-        #     res = {}
-
+        res = calc.res[category][currency][site].copy()
         res.reset_index(inplace=True)
         res.replace(np.nan,0,inplace=True)
         res = res.transpose()
         res.reset_index(inplace=True)
-
+        
         return Response(res)
 
     def post(self, request, format=None):
@@ -299,13 +366,102 @@ class GetUpdateResView(APIView):
         """
         reading price data
         """
-        print("reading userinput data")
-        self.data_module = make_calculations()
-        try:
-            self.data_module.input
-        except:
-            self.data_module.get_update_input()
-        print("updating result values")
-        self.data_module.update_res()
+        data_hom = read_quality()
+        data_in = read_input()
+        data_p = read_price()
+        df_plan_dict = get_plan_dict()
+        calc = make_calculations(data_hom, data_in, data_p, df_plan_dict)
+        calc.update_res()
+
         return Response({})
+
+
+class HealthCheck(APIView):
+    """
+    Triggers all APIs to check if they are running without error
+
+    ## local
+    # login first http://127.0.0.1:8000/admin
+    # http://127.0.0.1:8000/core/health_check
+
+    ## deployed
+    # login first: https://alkylates-test-api.chemicals-digital.sasol.com/admin
+    # https://alkylates-test-api.chemicals-digital.sasol.com/core/health_check
+
+    """
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, format=None):
+        """
+        reading price data
+        """
+        error = 0
+        r = requests.get("http://127.0.0.1:8000/core/get_quality")
+        r = pd.DataFrame(r)
+        if r.shape[0]>0:
+            print(r)
+        else:
+            error += 1
+        
+        r = requests.get("http://127.0.0.1:8000/core/get_price?Euro")
+        r = pd.DataFrame(r)
+        if r.shape[0]>0:
+            print(r)
+        else:
+            error += 1
+        
+        r = requests.get("http://127.0.0.1:8000/core/get_price?Dollar")
+        r = pd.DataFrame(r)
+        if r.shape[0]>0:
+            print(r)
+        else:
+            error += 1
+        
+        r = requests.get("http://127.0.0.1:8000/core/get_inputs")
+        r = pd.DataFrame(r)
+        if r.shape[0]>0:
+            print(r)
+        else:
+            error += 1
+        
+        r = requests.get("http://127.0.0.1:8000/core/get_inputs_editable")
+        r = pd.DataFrame(r)
+        if r.shape[0]>0:
+            print(r)
+        else:
+            error += 1
+        
+        r = requests.get("http://127.0.0.1:8000/core/get_planned?ISOSIV")
+        r = pd.DataFrame(r)
+        if r.shape[0]>0:
+            print(r)
+        else:
+            error += 1
+        
+        r = requests.get("http://127.0.0.1:8000/core/get_planned?MOLEX")
+        r = pd.DataFrame(r)
+        if r.shape[0]>0:
+            print(r)
+        else:
+            error += 1
+        
+        r = requests.get("http://127.0.0.1:8000/core/get_planned?Kero_premium")
+        r = pd.DataFrame(r)
+        if r.shape[0]>0:
+            print(r)
+        else:
+            error += 1
+        
+        r = requests.get("http://127.0.0.1:8000/core/get_res?category=Return Stream Price&currency=Euro&site=Augusta")
+        r = pd.DataFrame(r)
+        if r.shape[0]>0:
+            print(r)
+        else:
+            error += 1
+        
+        if error > 0:
+            return Response({'There were errors'    })
+        else:
+            return Response({'Test completed no errors'    })
+
 
