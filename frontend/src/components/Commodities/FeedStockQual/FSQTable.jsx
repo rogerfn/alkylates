@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-import Input from "../../input";
+import React from "react";
 import "../../../styles/Commodities/Forms.css";
 import TableData from '../../../Data/inputData.json'
 import ReadOnlyRow from "./ReadOnlyRow";
-import EditableRow from "./EditableRow";
 
 function FSQForm() {
-    const [editable, setEditable] = useState(true);
+    
 
     let headingData = TableData.Headings.map((heading) => {
         return <th>{heading}</th>;
@@ -15,8 +13,7 @@ function FSQForm() {
     let bodyData = TableData.Data.map(data =>{
         return  (
             <>
-          {/* {editable === data['true']}
-            <EditableRow/> */}
+
             <ReadOnlyRow data={data} />           
             </>
         ) 

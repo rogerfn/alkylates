@@ -23,7 +23,7 @@ function AuthModal() {
         <div className="authModal__passwordIcon">
           <RiLockPasswordFill style={{ fontSize: "20px" }} />
         </div>
-        <Input type="text" placeholder="Password" />
+        <Input type="password" placeholder="Password" />
       </div>
       <p className="authModal__createAccount"></p>
       <NavLink to="/home" style={{ textDecoration: "none" }}>

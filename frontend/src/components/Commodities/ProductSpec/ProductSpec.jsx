@@ -1,5 +1,5 @@
 import React from "react";
-import PSForm from "./PSForm";
+import PSForm from "./PSTable";
 import PSGraph from "./PSGraph";
 
 function ProductSpec({ toggleState }) {

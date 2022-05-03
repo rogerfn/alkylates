@@ -1,5 +1,5 @@
 import React from "react";
-import RMPForm from "./RMPForm";
+import RMPForm from "./RMPTable";
 import RMPGraph from "./RMPGraph";
 
 function RawMaterialPrice({ toggleState }) {

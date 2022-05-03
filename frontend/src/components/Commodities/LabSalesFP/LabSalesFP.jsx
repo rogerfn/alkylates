@@ -1,5 +1,5 @@
 import React from "react";
-import LSFPForm from "./LSFPForm";
+import LSFPForm from "./LSFPTable";
 import LSFPGraph from "./LSFPGraph";
 
 function LabSalesFP({ toggleState }) {

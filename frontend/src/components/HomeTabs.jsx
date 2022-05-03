@@ -62,7 +62,7 @@ function HomeTabs() {
             >
               <p className="option">
                 
-                Feedstock Consumption / Yield
+              Feedstock Consumption / Yield
                 </p> 
             </div>
             <div
@@ -70,7 +70,7 @@ function HomeTabs() {
               onClick={() => setActive("Raw Material Price")}
             >
              <p className="option">
-               Raw Material Price
+             Raw Material Price
                </p> 
                
             </div>
@@ -79,7 +79,7 @@ function HomeTabs() {
               onClick={() => setActive("LAB Sales Forecast & Price")}
             >
              <p className="option">
-                LAB Sales Forecast & Price
+             LAB Sales Forecast & Price
                </p>
             </div>
           </div>
@@ -111,7 +111,7 @@ function HomeTabs() {
               onClick={() => setActive("Product Specification")}
             >
              <p className="option">
-               Product Specification
+               get_planned
                </p> 
             </div>
             <div
@@ -120,7 +120,7 @@ function HomeTabs() {
             >
               <p className="option">
 
-              Feedstock Quality
+              get_inputs
               </p>
             </div>
             <div
@@ -129,7 +129,7 @@ function HomeTabs() {
             >
             <p className="option">
               
-               Feedstock Consumption / Yield
+               get_quality
               </p> 
             </div>
             <div
@@ -137,7 +137,7 @@ function HomeTabs() {
               onClick={() => setActive("Raw Material Price")}
             >
              <p className="option">
-               Raw Material Price
+               get_res
                </p> 
             </div>
             <div
@@ -146,7 +146,7 @@ function HomeTabs() {
             >
               
              <p className="option">
-               LAB Sales Forecast & Price
+               get_prices
                </p> 
             </div>
           </div>
