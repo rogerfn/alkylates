@@ -1,0 +1,23 @@
+
+.section-tab {
+    a {
+        color: rgba(44, 56, 74, 0.95);
+        text-decoration: none;
+
+    }
+    .input-section {
+        background-color: white;
+        margin: 0 0.5rem;
+        border: 1px solid #f7f7f7;
+    
+    }
+    
+    .active {
+        background-color: rgba(44, 56, 74, 0.95) !important;
+        color: white!important;
+        
+    
+    }
+
+
+}

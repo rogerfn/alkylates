@@ -1,0 +1,27 @@
+$avatar-size:36px;
+$sasol: #05395d;
+$info:          #c3d4dd;
+$warning:       #fec35a;
+$danger:        #ef4144;
+$light:         #e1ebf1;
+
+@import '~bootstrap/scss/bootstrap.scss';
+$coreui-icons-font-path: "~@coreui/icons/fonts";
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+@import "~@fortawesome/fontawesome-free/scss/regular.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+
+body {
+    background-color: #fcfcfc;
+    color:#05395d
+}
+
+.f-white {
+    color: white;
+
+}
+.bg-sasol {
+    background-color: rgba(44, 56, 74, 0.95) !important;
+}

@@ -1,17 +1,22 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
-import { BrowserRouter } from "react-router-dom";
-import reportWebVitals from "./reportWebVitals";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.scss';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/js/bootstrap.bundle.js';
+import { Provider } from "react-redux";
+import store from "./store";
+
+const API_URL = process.env.REACT_APP_API_URL;
+
+ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <Provider store={store}>
       <App />
-    </BrowserRouter>
-  </React.StrictMode>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
