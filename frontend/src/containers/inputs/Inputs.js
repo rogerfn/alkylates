@@ -1,7 +1,7 @@
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import { useState } from "react";
-import { BsGraphUp, BsUpload } from "react-icons/bs";
+import { BsGraphUp, BsUpload, BsFillCalendarEventFill,BsFillPieChartFill, BsCurrencyDollar } from "react-icons/bs";
 import DatabaseFeeds from "./DatabaseFeeds";
 import FeedstockQuality from "./FeedstockQuality";
 import PlanningData from "./PlanningData";
@@ -33,7 +33,7 @@ const Inputs = () => {
   return (
     <div>
       
-      <div className="container-fluid mt-5">
+      <div className="container-fluid mt-4">
         <div className="d-flex flex-row bd-highlight mb-3 section-tab">
           <SectionTab
             icon={<BsGraphUp></BsGraphUp>}
@@ -48,20 +48,20 @@ const Inputs = () => {
             onClick={() => setTab("feedstock")}
           />
           <SectionTab
-            icon={<BsUpload></BsUpload>}
+            icon={<BsCurrencyDollar></BsCurrencyDollar>}
             title="RAW MATERIAL PRICING"
             active={tab === "raw"}
             onClick={() => setTab("raw")}
           />
           <SectionTab
-            icon={<BsUpload></BsUpload>}
-            title="Planning Data"
+            icon={<BsFillCalendarEventFill></BsFillCalendarEventFill>}
+            title="PLANNING DATA"
             active={tab === "planning"}
             onClick={() => setTab("planning")}
           />
            <SectionTab
-            icon={<BsUpload></BsUpload>}
-            title="Variable Cost"
+            icon={<BsFillPieChartFill></BsFillPieChartFill>}
+            title="VARIABLE COST"
             active={tab === "variable"}
             onClick={() => setTab("variable")}
           />
