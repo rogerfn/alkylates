@@ -11,7 +11,7 @@ import {
 const initialState = {
   access: localStorage.getItem("access"),
   refresh: localStorage.getItem("refresh"),
-  isAuthenticated: localStorage.getItem("isAuthenticated"),
+  isAuthenticated: localStorage.getItem("isAuthenticated") === 'true',
   user: null,
   groups:null,
   authorization: {
